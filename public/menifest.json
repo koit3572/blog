@@ -1,0 +1,6 @@
+{
+  "web_accessible_resources": {
+    "resources": [ "temporary_profile_picture.jpg"],
+    "matches": [ "https://web-accessible-resources-1.glitch.me/*" ]
+  }
+}
