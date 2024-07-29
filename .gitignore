@@ -35,4 +35,5 @@ yarn-error.log*
 next-env.d.ts
 
 # data
-constants.ts
+src/constants.ts
+src/post
