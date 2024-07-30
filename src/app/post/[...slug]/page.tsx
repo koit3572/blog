@@ -41,7 +41,7 @@ const BlogPost = () => {
         className={`relative flex flex-col items-center rounded-lg`}
       >
         <PostContainer>
-          <div className="z-[20] absolute top-[-16vw] left-0 w-full h-[440px]">
+          <div className="z-[20] absolute top-[-16vw] left-0">
             <svg
               className="w-[100vw] h-[20vw] overflow-hidden pointer-events-none"
               viewBox="0 0 200 200"

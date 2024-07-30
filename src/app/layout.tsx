@@ -38,7 +38,7 @@ export default function RootLayout({
               <MainNavBar />
               <ScrollTo />
             </nav>
-            <header className="relative h-[65vh] min-h-[1000px] pb-[200px]">
+            <header className="relative h-[65vh] min-h-[1000px] pb-[35vh]">
               <article className="z-[20] absolute w-full">
                 <MainHeader />
               </article>

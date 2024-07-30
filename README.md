@@ -5,16 +5,43 @@
     - gsap을 통한 애니메이션 추가(요소 float효과, 스크롤 이동)
     - react-icons를 통해 아이콘 적용
   - `데이터`
-    - redux-toolkit을 통한 상태관리 및 redux-persist을 통해 일부 데이터를 로컬스토리지에 저장 및, createAsyncThunk를 통한 비동기 처리
-    - 각 자료형의 기본 메서드(reduce,slice,split,replace 등)를 활용하여 원하는 구조나 자료형으로 데이터를 편집및 활용
-    - 
+    - `상태관리`
+      - redux-toolkit을 통한 상태관리 및 redux-persist을 통해 일부 데이터를 로컬스토리지에 저장 및, createAsyncThunk를 통한 비동기 처리
+    - `편집,관리,활용`
+      - 각 자료형의 기본 메서드(reduce,slice,split,replace 등)를 활용하여 원하는 구조나 자료형으로 데이터를 편집및 활용
+      - NodeJS의 모듈 fs와 path를 통해 경로를 편집하고 파일처리를 진행하여 원하는 데이터와 페이지를 사용자에게 노출
+      - 필요에 따른 특정구조의 데이터를 편집하기위한 함수 생성 및 활용
+    - `html`
+      - dom api를 통해 스타일 적용 및 class추가
+    - `hook`
+      - useOnlcickOutside와 같은 훅을 생성하고, lodash를 통해 debounce를 사용하여 hook을 적극적으로 사용
   - `NextJS`
     - csr과 ssr을 필요에 따라 적용하여 사용
     - app router, api router, dynamic router를 통해 페이지와 api를 관리
 - `layout`
-- `home page`
-  - swiper연동 및 swiper module들과 커스텀 스타일링을 통해 원하는 스타일과 동작을 하는 슬라이스 생성
-- `post page`
+  - `sidebar`
+    - 브라우저 창의 x크기가 변동 시 1536px보다 큰 경우
+      - 사이드바가 노출되면 노출된 상태로 변화를 줄 수 없다.
+    - 브라우저 창의 x크기가 변동 시1536px보다 작을 경우
+      - 사이드바가 감춰지며 navbar의 메뉴선택 icon(HiMenu)을 통해 다시 노출시킬 수 있다.
+      - 해당 조건에서 사이드바가 노출될 시 화면을 조금 어둡게 가리는 블러처리를 적용하며, 사이드바 외에 다른 구역을 클릭하면 사이드바가 감춰진다.
+  - `navbar`
+    - 브라우저 창 최상단에 고정(fixed)되어있으며, 사이드바를 조작하는 버튼을 가지고 
+    있다.
+    - 브라우저의 스크롤이 200px 이상으로 내려갔을때 스크롤을 최상단으로 움직이게 하는 버튼이 화면상에 노출되게 된다. 애니메이션 효과는 gsap을 통해 처리하였으며, scroll변동 감지를 최적화 하기위해 throttle을 적용하였다.
+  - `header`
+    - svg의 path를 통해 간단한 곡선 스타일이 적용되어있다.
+  - `mainSection`
+    - 사이드바가 노출되거나 감춰짐에 내부 컨텐츠가 대칭을 잃지 않도록 반응하여 padding을 주었다.
+- `pages`
+  - `home page`
+    - swiper연동 및 swiper module들과 커스텀 스타일링을 통해 원하는 스타일과 동작을 하는 슬라이스 생성
+  - `post page`
+    - [rootSlug]
+      - 직접 만든 pagination을 통해 페이지 관리
+    - [...slug]
+      - ReactMarkdown와 rehypeHighlight, remarkGfm 라이브러리를 통해 markdown파일을 편집 및 디자인을 적용
+      - 목차를 통해 페이지 내에 원하는 내용이 있는 위치로 이동
 
 # 정리해야할 목록
 - https://velog.io/@mjieun/Next.js-%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%A1%9C%EB%94%A9-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-app-router

@@ -14,44 +14,25 @@ dotenv.config();
 interface IMainSideBarData {
   [dirName:string]:string[]
 }
-const menuHeight = [
-  "h-[30px]",
-  "h-[60px]",
-  "h-[90px]",
-  "h-[120px]",
-  "h-[150px]",
-  "h-[180px]",
-  "h-[210px]",
-  "h-[240px]",
-  "h-[270px]",
-  "h-[300px]",
-  "h-[330px]",
-  "h-[360px]",
-  "h-[390px]",
-  "h-[420px]",
-  "h-[450px]",
-  "h-[480px]",
-  "h-[510px]",
-  "h-[540px]",
-  "h-[570px]",
-  "h-[600px]",
-];
 const handleOnClickTitle = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
   const parentEl = e.currentTarget.parentElement!;
   const opentitleClassList = parentEl!.querySelector(".open-title")!.classList.value.split(" "); 
   const isOpenTitle = !opentitleClassList.find((className) => className === 'hidden')
-  const height =
-    menuHeight[parentEl.querySelector(".menu")!.children.length - 1];
+  const height = (parentEl.querySelector(".menu")!.children.length) - 1 * 30;
   if (isOpenTitle) {
     parentEl.querySelector(".open-title")!.classList.add("hidden");
     parentEl.querySelector(".close-title")!.classList.remove("hidden");
     parentEl.querySelector(".menu")!.classList.add("h-0");
-    parentEl.querySelector(".menu")!.classList.remove(height);
+    (
+      parentEl.querySelector(".menu")! as HTMLElement
+    ).style.height = `${height}px`;
   } else {
     parentEl.querySelector(".open-title")!.classList.remove("hidden");
     parentEl.querySelector(".close-title")!.classList.add("hidden");
     parentEl.querySelector(".menu")!.classList.remove("h-0");
-    parentEl.querySelector(".menu")!.classList.add(height);
+    (
+      parentEl.querySelector(".menu")! as HTMLElement
+    ).style.height = `${height}px`;
   }
 }
 const RootMenu = () => {
