@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy": "CI = false npm run build"
+    "predeploy": "CI = npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
