@@ -2,7 +2,6 @@
 
 const nextConfig = {
   reactStrictMode: false,
-  output:"export",
   env: {
     BASE_URL:process.env.BASE_URL
   }
