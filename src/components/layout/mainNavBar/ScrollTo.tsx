@@ -31,6 +31,7 @@ const ScrollTo = () => {
   useEffect(() => {
     window.addEventListener("scroll", throttleListener);
     return () => window.removeEventListener("scroll", throttleListener);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

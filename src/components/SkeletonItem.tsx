@@ -12,6 +12,7 @@ const Skeleton: React.FC<ISkeletonProps> = ({ width, height }) => {
       x: width * 2,
       repeat: -1,
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div

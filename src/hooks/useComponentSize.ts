@@ -24,6 +24,7 @@ function useComponentSize({ throttleTime }: {throttleTime:number}): [React.RefOb
       throttleTime === 0 ? handleResize : _.throttle(handleResize, throttleTime)
     );
     return () => window.removeEventListener("resize", handleResize);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return [componentRef, size];
 }

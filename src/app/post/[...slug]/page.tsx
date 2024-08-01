@@ -22,6 +22,7 @@ const BlogPost = () => {
       setDiffer(false)
     }, 1500)
     console.log(post);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isLoading && (isLoading || differ)) {

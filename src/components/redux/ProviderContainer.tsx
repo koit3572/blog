@@ -10,6 +10,7 @@ const ProviderContainer: React.FC<IProviderContainer> = ({ children }) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchPost());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return <>{!isLoading ? children : null}</>;
 };
