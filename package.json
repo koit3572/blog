@@ -11,6 +11,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@netlify/plugin-nextjs": "^4.29.5-appdir.0",
     "@reduxjs/toolkit": "^2.2.5",
     "dotenv": "^16.4.5",
     "gray-matter": "^4.0.3",
