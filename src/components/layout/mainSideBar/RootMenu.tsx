@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from 'react'
+import React from 'react'
 import dotenv from 'dotenv'
 import { removeNumbering } from '@/lib/post';
 import MenuItemTitle from './MenuItemTitle';

@@ -58,13 +58,13 @@ const Search = () => {
     dispatch(addRecentSearchHistory(getPostTitleformat(path)))
     route.push(`/post/${path}`)
   }
-  const onSubmit = async (data: IFormValues) => {
-    console.log(data,currentSearch)
-    dispatch(addRecentSearchHistory(data.search))
-    setCurrentSearch("")
-    setIsFocuse(false)
-    reset();
-  }
+  // const onSubmit = async (data: IFormValues) => {
+  //   console.log(data,currentSearch)
+  //   dispatch(addRecentSearchHistory(data.search))
+  //   setCurrentSearch("")
+  //   setIsFocuse(false)
+  //   reset();
+  // }
   const onChangeInput = _.debounce((inputOnChange: React.ChangeEvent<HTMLInputElement>) => {
     register("search").onChange(inputOnChange);
     setCurrentSearch(inputOnChange.target.value);
@@ -80,7 +80,7 @@ const Search = () => {
     <form
       ref={formRef}
       className="relative flex flex-col items-center"
-      onSubmit={handleSubmit(onSubmit)}
+      // onSubmit={handleSubmit(onSubmit)}
     >
       <input
         id="search-input"
@@ -175,12 +175,17 @@ const Search = () => {
           )}
         </div>
       )}
-      <button
+      {/* <button
         type="submit"
         className="close absolute top-[0.45rem] right-[0.55rem] opacity-35"
       >
         <FaSearch size={18} className="pointer-events-none" />
-      </button>
+      </button> */}
+      <div
+        className="close absolute top-[0.45rem] right-[0.25rem] opacity-35"
+      >
+        <FaSearch size={18} className="pointer-events-none" />
+      </div>
     </form>
   );
 }

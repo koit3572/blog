@@ -65,18 +65,18 @@ const MarkdownPreview: React.FC<IMarkdownPreview> = ({ postContent, pathName, po
             {post.discription}
           </p>
         </div>
-        <div className="flex flex-col items-center w-full h-[350px] mb-12">
-          <h1 className="w-[600px] px-3 py-2 bg-slate-600 text-[2rem] font-[600] text-gray-200 rounded-t-lg">
+        <div className="flex flex-col items-center w-full h-[450px] mb-12">
+          <h1 className="w-[800px] px-3 py-2 bg-slate-600 text-[2rem] font-[600] text-gray-200 rounded-t-lg">
             목차
           </h1>
-          <ul className="w-[600px] border-[1.2px] border-[#475569] border-t-0 border-opacity-30 rounded-b-lg overflow-x-hidden overflow-y-auto">
+          <ul className="w-[800px] border-[1.2px] border-[#475569] border-t-0 border-opacity-30 rounded-b-lg overflow-x-hidden overflow-y-auto">
             {postTitles.map((postTitle, i) => {
               const formatTitle = postTitle.replaceAll("#", "").slice(1);
               const num = postTitle.split("").filter(text=>text==="#")
               return (
                 <li
                   style={{paddingLeft:`${num.length}rem`}}
-                  className="w-[600px] py-1 border-[#475569] text-[1.5rem] border-opacity-30 border-b-[1.2px] hover:cursor-pointer hover:font-bold"
+                  className="w-full py-1 border-[#475569] text-[1.5rem] border-opacity-30 border-b-[1.2px] hover:cursor-pointer hover:font-bold"
                   key={i}
                   onClick={() => onClickListItme(i)}
                 >

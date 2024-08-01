@@ -1,7 +1,7 @@
+'use client'
 import React from 'react'
 import getRandom from "@/utils/getRandom";
-import bgImage from '@/../public/jpg/header_background-img.jpg'
-import Image from 'next/image';
+import { useParams, usePathname } from 'next/navigation';
 export const QuoteList = [
   { quote: "준비하지 않은 자는 기회가 와도 소용없다.", author: "알렉시드 드 토크빌" },
   { quote: "노력에 집착해라. 숙명적인 노력을.", author: "레오나르도 다 빈치" },
@@ -58,8 +58,10 @@ const quote = QuoteList[getRandom(0, Object.keys(QuoteList).length - 1)];
 
 
 const MainHeader = () => {
+  const pathName = usePathname();
+  const params = useParams();
   return (
-    <div className="flex flex-col h-[65vh] min-h-[800px] pt-[10rem]">
+    <div className="flex flex-col h-[100vh] min-h-[800px] pt-[10rem]">
       <div className="z-[-10] absolute top-0 w-[100vw] h-full bg-slate-700">
         {/* <Image src={bgImage} alt="background-image" fill /> */}
         <div className="absolute top-0 w-full h-full bg-slate-900 opacity-75" />
@@ -72,12 +74,12 @@ const MainHeader = () => {
           version="1.1"
         >
           <path
-            fill="#0f172a" //0f172a
+            fill="#0f172a"
             d={`
-              M 0 150
-              L 0 175
-              C 25 140 75 140 100 175
-              S 150 200 200 150
+              M 0 120
+              L 0 145
+              C 25 110 75 110 100 145
+              S 150 170 200 120
               L 200 200
               L 0 200
               Z
@@ -86,16 +88,34 @@ const MainHeader = () => {
             strokeLinejoin="miter"
           />
           <path
-            fill="#334155" //0f172a
+            fill="#334155"
             d={`
-              M 0 175
-              L 0 195
-              C 25 150 75 150 100 175
-              S 175 200 200 175
+              M 0 200
+              L 0 170
+              C 25 125 70 100 100 150
+              S 175 175 200 150
               L 200 200
               L 0 200
               Z
             `}
+            strokeLinecap="round"
+            strokeLinejoin="miter"
+          />
+          <path
+            fill={
+              pathName === '/' || Object.keys(params)[0] === "rootSlug"
+                ? "#334155"
+                : "#e5e7eb"
+            }
+            d={`
+                M 0 200
+                L 0 180
+                C 40 125 70 135 100 175
+                S 175 210 200 135
+                L 200 150
+                L 200 200 
+                Z 
+              `}
             strokeLinecap="round"
             strokeLinejoin="miter"
           />

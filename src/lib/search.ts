@@ -21,19 +21,16 @@ export const getSearchRanking = async ({ posts, search }: IGetSearchRankingParam
       const tagOrCategorys = [
         ...new Set([...category.slice(0, category.length - 1), ...tags]),
       ];
-
-      const includeSearch = tagOrCategorys.reduce((acc3, tagOrCategory) => {
-        const isInclude = search
-          .toLowerCase()
-          .replaceAll(" ", "")
-          .includes(tagOrCategory.toLowerCase().replaceAll(" ", ""));
-
-        if (isInclude) {
-          console.log("return");
-          return (acc3 = [...acc3, tagOrCategory]);
-        }
-        return (acc3 = acc3);
-      }, [] as string[]);
+      const includeSearch = tagOrCategorys.filter(
+        (tagOrCategory) =>
+          tagOrCategory
+            .toLocaleLowerCase()
+            .indexOf(search.toLocaleLowerCase().replaceAll(" ", "")) !== -1
+          || search
+            .toLowerCase()
+            .replaceAll(" ", "")
+            .includes(tagOrCategory.toLowerCase().replaceAll(" ", ""))
+      );
 
       if (includeSearch.length !== 0) {
         if (Object.keys(acc1).includes(keys[i])) {

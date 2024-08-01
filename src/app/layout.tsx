@@ -38,19 +38,17 @@ export default function RootLayout({
               <MainNavBar />
               <ScrollTo />
             </nav>
-            <header className="relative h-[65vh] min-h-[1000px] pb-[35vh]">
+            <header className="relative h-[65vh] min-h-[800px] pb-[100vh]">
               <article className="z-[20] absolute w-full">
                 <MainHeader />
               </article>
               <article className="z-[40] absolute flex justify-center w-full pt-[17rem]">
-                <div className='w-[15rem]'>
+                <div className="w-[15rem]">
                   <Search />
                 </div>
               </article>
             </header>
-            <section className="w-full">
-              {children}
-            </section>
+            <section className="w-full">{children}</section>
             <footer>
               <div className="w-[100vw] h-[12rem] bg-slate-800">1</div>
             </footer>

@@ -4,7 +4,7 @@ import MarkdownPreview from '@/components/post/MarkdownPreview';
 import PostContainer from '@/components/post/PostContainer';
 import { usePathname } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { fetchPostContent, removePostContent } from '@/store/post/postContentSlice';
+import { fetchPostContent } from '@/store/post/postContentSlice';
 import Skeleton from '@/components/SkeletonItem';
 
 const BlogPost = () => {
@@ -41,29 +41,6 @@ const BlogPost = () => {
         className={`relative flex flex-col items-center rounded-lg`}
       >
         <PostContainer>
-          <div className="z-[20] absolute top-[-16vw] left-0">
-            <svg
-              className="w-[100vw] h-[20vw] overflow-hidden pointer-events-none"
-              viewBox="0 0 200 200"
-              preserveAspectRatio="none"
-              version="1.1"
-            >
-              <path
-                fill="#e5e7eb"
-                d={`
-                M 0 200
-                L 0 100
-                C 25 25 75 25 100 100
-                S 175 175 200 100
-                L 200 100
-                L 200 200 
-                Z 
-              `}
-                strokeLinecap="round"
-                strokeLinejoin="miter"
-              />
-            </svg>
-          </div>
           <MarkdownPreview
             postContent={postContent}
             pathName={pathName}

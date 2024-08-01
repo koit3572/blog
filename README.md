@@ -31,6 +31,7 @@
     - 브라우저의 스크롤이 200px 이상으로 내려갔을때 스크롤을 최상단으로 움직이게 하는 버튼이 화면상에 노출되게 된다. 애니메이션 효과는 gsap을 통해 처리하였으며, scroll변동 감지를 최적화 하기위해 throttle을 적용하였다.
   - `header`
     - svg의 path를 통해 간단한 곡선 스타일이 적용되어있다.
+    - useform라이브러리를 통해 검색기능 생성
   - `mainSection`
     - 사이드바가 노출되거나 감춰짐에 내부 컨텐츠가 대칭을 잃지 않도록 반응하여 padding을 주었다.
 - `pages`
@@ -40,7 +41,7 @@
     - [rootSlug]
       - 직접 만든 pagination을 통해 페이지 관리
     - [...slug]
-      - ReactMarkdown와 rehypeHighlight, remarkGfm 라이브러리를 통해 markdown파일을 편집 및 디자인을 적용
+      - ReactMarkdown와 rehypeHighlight, remarkGfm, gray-matter 라이브러리를 통해 markdown파일을 편집 및 디자인을 적용
       - 목차를 통해 페이지 내에 원하는 내용이 있는 위치로 이동
 
 # 정리해야할 목록
