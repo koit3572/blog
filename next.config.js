@@ -2,6 +2,9 @@
 
 const nextConfig = {
   reactStrictMode: false,
+  experimental: {
+    appDir: true
+  },
   env: {
     BASE_URL:process.env.BASE_URL
   }
