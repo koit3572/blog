@@ -41,7 +41,7 @@ export const fetchPost = createAsyncThunk(
   'post/fetchPost',
   async (_, thunkAPI) => {
     try {
-      const res = await fetch("/api", {
+      const res = await fetch("api", {
         method: "GET",
         cache: "no-store",
       });
