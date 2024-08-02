@@ -1,5 +1,5 @@
 [build]
-command = "CI= npm run build"
+command = "CI= npx run build"
 publish = "src"
 
 [[plugins]]
