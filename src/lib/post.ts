@@ -6,7 +6,10 @@ interface IGetPostFolderStructure {
   [fileOrDir: string]: (dirpath:string)=>IGetPostFolderStructure | string;
 }
 // post의 파일과 폴더들이 들어있는 root폴더의 path 가져오기
-export const rootPath = path.join(process.cwd(), "src/post/")
+export const rootPath = path.join(
+  "https://main--cerulean-cucurucho-f5db33.netlify.app/",
+  "src/post/"
+);
 
 // 특정 폴더의 fullPath가져오기
 export const getFullPath = (dirPath: string) => {
