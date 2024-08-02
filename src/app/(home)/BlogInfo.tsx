@@ -3,6 +3,7 @@ import React from 'react'
 import { PiCalendarDuotone } from "react-icons/pi";
 import { BsFileText } from "react-icons/bs";
 import { useAppSelector } from '@/hooks/redux';
+
 const BlogInfo = () => {
   const postPaths = Object.keys(useAppSelector(state => state.postSlice.postData.posts))
   const postLenght = postPaths.length

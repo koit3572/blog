@@ -1,12 +1,10 @@
 'use client'
-import gsap from "gsap";
 import BlogInfo from "./BlogInfo";
 import LatestPostList from "./LatestPostList";
 import MyResume from "./MyResume";
 import RandomPostList from "./RandomPostList";
 import RecommendedPostList from "./RecommendedPostList";
 import RootDirMenu from "./RootDirMenu";
-import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 

@@ -7,6 +7,7 @@ import { BsFilePersonFill } from 'react-icons/bs';
 import { IoLogoGithub } from 'react-icons/io5';
 import gsap from 'gsap';
 import getRandom from '@/utils/getRandom';
+
 const MyResume = () => {
   const firstFloatEl = useRef<HTMLAnchorElement>(null);
   const secondFloatEl = useRef<HTMLAnchorElement>(null);

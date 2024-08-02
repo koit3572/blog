@@ -1,9 +1,9 @@
 "use client";
 import PostContainerStyle1 from "@/components/post/PostContainerStyle1";
 import { useAppSelector } from "@/hooks/redux";
-import { PostData } from "@/store/post/postSlice";
 import getRandom from "@/utils/getRandom";
 import React from "react";
+
 const RandomPostList = () => {
   const arr = new Array(3);
   const { posts } = useAppSelector((state) => state.postSlice.postData);

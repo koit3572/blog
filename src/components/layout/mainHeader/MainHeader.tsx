@@ -2,7 +2,8 @@
 import React from 'react'
 import getRandom from "@/utils/getRandom";
 import { useParams, usePathname } from 'next/navigation';
-export const QuoteList = [
+
+const QuoteList = [
   { quote: "준비하지 않은 자는 기회가 와도 소용없다.", author: "알렉시드 드 토크빌" },
   { quote: "노력에 집착해라. 숙명적인 노력을.", author: "레오나르도 다 빈치" },
   { quote: "내일이란 오늘의 다른 이름일 뿐이다.", author: "윌리엄 포크너" },

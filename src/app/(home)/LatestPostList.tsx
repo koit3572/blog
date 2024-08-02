@@ -1,7 +1,6 @@
 "use client";
 import PostContainerStyle1 from "@/components/post/PostContainerStyle1";
 import { useAppSelector } from "@/hooks/redux";
-import { PostData } from "@/store/post/postSlice";
 import React from "react";
 
 const LatestPostList = () => {
