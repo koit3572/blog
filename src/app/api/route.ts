@@ -31,6 +31,7 @@ export const GET = async () => {
     };
     return NextResponse.json(postData);
   } catch (error) {
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     return NextResponse.error();
   }
 }
