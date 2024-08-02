@@ -1,5 +1,5 @@
 [build]
-command = "CI=false npm run build"
+commant = "CI=false npm run build"
 publish = "blog/"
 
 [[plugins]]
