@@ -1,6 +1,6 @@
 [build]
 commant = "CI=false npm run build"
-publish = "blog/"
+publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
