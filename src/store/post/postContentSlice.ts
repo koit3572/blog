@@ -16,7 +16,7 @@ export const fetchPostContent = createAsyncThunk(
   'post/fetchPostContent',
   async (url:string, thunkAPI) => {
     try {
-      const fullUrl = `/api${url}`;
+      const fullUrl = `api${url}`;
       const res = await fetch(fullUrl, {
         method: "GET",
         cache: "no-store",
