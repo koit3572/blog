@@ -5,7 +5,7 @@ import { NextResponse } from "next/server"
 export interface IMainSideBarData {
   [dirName: string]: string[] ;
 }
-export const GET = () => {
+export const GET = async () => {
   const postFolderStructure = getPostFolderStructure();
   const postPaths = getAllPostPaths()!;
   const posts = postPaths.reduce((acc, postPath) => {
