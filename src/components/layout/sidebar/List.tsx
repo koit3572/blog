@@ -38,7 +38,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
         className="overflow-hidden bg-blog-white transition-[height]"
         style={{
           height: isToggle
-            ? `${2 * (Object.keys(currentFolder).length - 1)}rem`
+            ? `${2 * Object.keys(currentFolder).length}rem`
             : "0",
         }}
       >
