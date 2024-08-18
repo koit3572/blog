@@ -11,7 +11,9 @@ const Menu = () => {
   const { posts } = useAppSelector((state) => state.postSlice);
   const category = useSearchParams().get("category")!;
   const [currentIndex, setCurrentIndex] = useState<number>(1);
-  const [filterPosts, setFilterPosts] = useState<IPosts>({});
+  const [filterPosts, setFilterPosts] = useState<IPosts>(
+    getFilterPosts(category, posts),
+  );
   useEffect(() => {
     setFilterPosts(getFilterPosts(category, posts));
     setCurrentIndex(1);
