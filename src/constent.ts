@@ -1,0 +1,2 @@
+export const LAYOUT_NAVBAR_HEIGHT = 70;
+export const WIDTH_RESPONSE_STANDARD = 1280;

@@ -1,40 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 설치
 
-## Getting Started
+## 데이터
 
-First, run the development server:
+- npm i react-hook-form
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## markdown
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- npm i gray-matter
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## tailwindcss
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- npm i tailwind-scrollbar-hide
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 스타일
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- npm i swiper
 
-## Learn More
+## 애니메이션
 
-To learn more about Next.js, take a look at the following resources:
+- npm i gsap
+- npm i react-icons
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## lodash
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- npm i lodash
+- npm i --save-dev @types/lodash
 
-## Deploy on Vercel
+## redux
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- npm i react-redux redux redux-persist @reduxjs/toolkit
+- npm i --save-dev @types/redux-persist
+- npm i next-redux-wrapper
+- npm i redux-logger
+- npm i --save-dev @types/redux-logger
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Nextjs
+
+- https://velog.io/@taeung/Next.js-getStaticProps-%EC%82%AC%EC%9A%A9%EA%B8%B0
+- https://velog.io/@nemo/getServerSideProps-getStaticProps
+- https://www.inflearn.com/community/questions/526132/app-%EC%97%90%EC%84%9C-getinitialprops-%EC%82%AC%EC%9A%A9
+- https://velog.io/@picpal/Next.js%EC%9D%98-SSG-Static-Site-Generation-SSR-Server-Side-Rendering%EC%9D%84-%ED%95%98%EB%8A%94-%EC%9D%B4%EC%9C%A0-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95
+- https://bigyou98.tistory.com/entry/Nextjs-%EC%93%B0%EB%A9%B4-SSR-%ED%95%98%EA%B3%A0-%EC%9E%88%EB%8A%94%EA%B1%B0-%EC%95%84%EB%8B%98
+- https://velog.io/@devstone/Next.js-100-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0-feat.-initialProps-webpack-storybook#0-nextjs%EA%B0%80-ssr%EC%9D%84-%EC%88%98%ED%96%89%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D
+- https://nextjs.org/docs/pages/building-your-application/routing/custom-app
+- https://velog.io/@chaerin00/Next.js-app.tsx%EC%97%90%EC%84%9C-getInitialProps-%EC%BB%A4%EC%8A%A4%ED%85%80%ED%95%98%EA%B8%B0
+- error
+  - Error: page / getStaticProps can not be attached to a page's component and must be exported from the page. See more info here: https://nextjs.org/docs/messages/gssp-component-member
+    - https://nextjs.org/docs/messages/gssp-component-member
+- getStaticProps
+  ```js
+  export default function Home({ message }: InferGetStaticPropsType<typeof getStaticProps>) {
+    return <div>{message}</div>;
+  }
+  export const getStaticProps = (async () => {
+    return {
+      props: {
+        message: "안녕하세요",
+      },
+    };
+  }) satisfies GetStaticProps<{ message: string }>;
+  ```
+- CSR, SSR, SSG
+  - process.cwd()와 \_\_dirname차이
+    - process.cwd()선언된 파일의 루트 경로
+    - \_\_dirname선언된 파일의 경로
+
+# tailwindcss
+
+## prettier-plugin-tailwindcss
+
+- npm i -D prettier eslint-config-prettier prettier-plugin-tailwindcss
+  - prettier : 코드 스타일을 일관되게 유지할 수 있게 도와주는 툴
+  - eslint-config-prettier : prettier와 충돌하는 모든 eslint규칙을 꺼주는 옵션
+  - prettier-plugin-tailwindcss : tailwindcss 클래스를 권장 클래스 순서에 따라 자동으로 정렬해주는 prettier플러그인
+- (설정 검색 ctrl+,) default formatter > Editor:Default Formatter
+  - settings.json : "editor.formatOnSave": true
+- (설정 검색 ctrl+,) format on > Editor:Format On Save
+  - settings.json : "editor.defaultFormatter": "esbenp.prettier-vscode"
+- 프로젝트 루트경로에 .prettierrc파일 생성
+  ```
+  {
+    "plugins": [ "prettier-plugin-tailwindcss" ],
+    "tailwindAttributes": [ "className" ]
+  }
+  ```
+
+## tailwindCSS 커스텀 색상
+
+- https://velog.io/@boorook/Tailwind-CSS%EC%97%90%EC%84%9C-%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%BB%AC%EB%9F%AC-%EC%84%A4%EC%A0%95
+
+# 에러 및 문제 해결
+
+## URL에서 &를 문자열으로 사용하려 할때 문제
+
+- https://blog.naver.com/csgct/220444910779
+
+## Server Error
+
+<!-- - SyntaxError: Cannot use import statement outside a module
+  This error happened while generating the page. Any console logs will be displayed in the terminal window.
+  - -->
+
+- SyntaxError: Unexpected token 'export'
+  - next.config.js > nextConfig에 transpilePackages:['gsap']
+    (gsap/ScrollToPlugin를 사용하는 과정중 발생한 에러)
+
+## 기타
+
+- useEffect가 2번 동작한다.
+  - next.config.js > nextConfig에 reactStrictMode: false
+    (true를 false로 변경)
