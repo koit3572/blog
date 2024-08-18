@@ -24,10 +24,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
     }
   };
   return (
-    <li
-      className="w-[calc(100%-0.5rem)] cursor-pointer"
-      onClick={() => console.log(category, currentFolder)}
-    >
+    <li className="w-[calc(100%-0.5rem)] cursor-pointer">
       <div onClick={handleOnClickTitle}>
         {isToggle ? (
           <Title title={getFormatText(category)} />
@@ -46,7 +43,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
         }}
       >
         {currentFolder.map((item, i) => (
-          <div
+          <li
             key={i}
             className="flex items-center gap-1 p-1"
             onClick={() => handleOnClickItem(category, item)}
@@ -59,7 +56,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
                 }).length
               })`}
             </p>
-          </div>
+          </li>
         ))}
       </ul>
     </li>
