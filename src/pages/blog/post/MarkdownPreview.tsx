@@ -7,12 +7,13 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 import remarkGfm from "remark-gfm";
 import gsap from "gsap";
+import { useSearchParams } from "next/navigation";
+import { useAppSelector } from "@/hooks/redux";
 
-interface IMarkdownPreview {
-  post: PostInfo;
-}
-
-const MarkdownPreview: React.FC<IMarkdownPreview> = ({ post }) => {
+const MarkdownPreview = () => {
+  const query = useSearchParams().get("path");
+  const { posts } = useAppSelector((state) => state.postSlice);
+  const [post, setPost] = useState(posts[query as keyof typeof posts]);
   const divRef = useRef<HTMLDivElement>(null);
   const [spyOffsetTops, setSpyOffsetTops] = useState<number[]>([]);
   const onClickListItme = (index: number) => {
@@ -30,6 +31,9 @@ const MarkdownPreview: React.FC<IMarkdownPreview> = ({ post }) => {
     console.log(post);
     setSpyOffsetTops([...spyOffsetTops]);
   }, [post]);
+  useEffect(() => {
+    setPost(posts[query as keyof typeof posts]);
+  }, [posts, query]);
   return (
     <div className="max-w-[100vw]">
       <div ref={divRef} className="flex flex-col items-center">
