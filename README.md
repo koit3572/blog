@@ -1,8 +1,13 @@
 # 설치
 
+## netlify
+
+- npm i --save @netlify/plugin-nextjs
+
 ## 데이터
 
 - npm i react-hook-form
+- npm i dotenv
 
 ## markdown
 
@@ -10,6 +15,7 @@
 - npm i react-markdown
 - npm i rehype-highlight
 - npm i remark-gfm
+
 ## tailwindcss
 
 - npm i tailwind-scrollbar-hide

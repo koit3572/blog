@@ -11,8 +11,11 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { setPostData } from "@/store/post/postSlice";
 import { wrapper, RootState } from "@/store";
-import { ApiResApp } from "@/types/post";
+import { ApiResApp, PostInfo } from "@/types/post";
 import { persistStore } from "redux-persist";
+
+import dotenv from "dotenv";
+dotenv.config();
 
 Layout.getInitialProps = wrapper.getInitialAppProps(
   (store) =>
@@ -25,9 +28,9 @@ Layout.getInitialProps = wrapper.getInitialAppProps(
         pageProps = await Component.getInitialProps(ctx);
       }
       if (
-        1 // Object.keys((store.getState() as IState).postSlice.menu).length === 0
+        Object.keys((store.getState() as RootState).postSlice.menu).length === 0
       ) {
-        const res = await fetch("http://localhost:3000/api/app");
+        const res = await fetch(process.env.API_APP_URL as string);
         const app: ApiResApp = await res.json();
         store.dispatch(
           setPostData({
