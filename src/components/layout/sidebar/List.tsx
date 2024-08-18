@@ -51,9 +51,10 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
             <h4>{getFormatText(item)}</h4>
             <p className="text-[0.8rem] opacity-80">
               {`(${
-                postPaths.filter((postPath) => {
-                  return postPath.includes(`${category}\\${item}`);
-                }).length
+                postPaths.filter(
+                  (postPath) =>
+                    postPath.includes(category) && postPath.includes(item),
+                ).length
               })`}
             </p>
           </li>
