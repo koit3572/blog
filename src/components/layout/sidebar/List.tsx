@@ -9,7 +9,6 @@ interface ListProps {
   postPaths: string[];
 }
 const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
-  console.log(category, currentFolder);
   const route = useRouter();
   const query = useSearchParams().get("category");
   const params = usePathname();
@@ -25,7 +24,10 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
     }
   };
   return (
-    <li className="w-[calc(100%-0.5rem)] cursor-pointer">
+    <li
+      className="w-[calc(100%-0.5rem)] cursor-pointer"
+      onClick={() => console.log(category)}
+    >
       <div onClick={handleOnClickTitle}>
         {isToggle ? (
           <Title title={getFormatText(category)} />
