@@ -9,6 +9,7 @@ interface ListProps {
   postPaths: string[];
 }
 const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
+  console.log(category, currentFolder);
   const route = useRouter();
   const query = useSearchParams().get("category");
   const params = usePathname();

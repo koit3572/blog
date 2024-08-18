@@ -12,7 +12,6 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
     <ul className={`${className}`}>
       {Object.keys(menu).map((category, i) => {
         const currentFolder = menu[category];
-        console.log(category, currentFolder);
         return (
           <List
             key={i}
