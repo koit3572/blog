@@ -11,8 +11,14 @@ const Menu: React.FC<MenuProps> = ({ className }) => {
   return (
     <ul className={`${className}`}>
       {Object.keys(menu).map((category, i) => {
+        const currentFolder = menu[category];
         return (
-          <List key={i} category={category} postPaths={Object.keys(posts)} />
+          <List
+            key={i}
+            category={category}
+            currentFolder={currentFolder as string[]}
+            postPaths={Object.keys(posts)}
+          />
         );
       })}
     </ul>

@@ -1,21 +1,18 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Title from "./Title";
 import { getFormatText } from "@/lib/post";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useAppSelector } from "@/hooks/redux";
 interface ListProps {
   category: string;
+  currentFolder: string[];
   postPaths: string[];
 }
-const List: React.FC<ListProps> = ({ category, postPaths }) => {
-  const { menu } = useAppSelector((state) => state.postSlice);
+const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
   const route = useRouter();
   const query = useSearchParams().get("category");
   const params = usePathname();
   const [isToggle, setIsToggle] = useState<boolean>(false);
-  const [currentFolder, setCurrentFolder] = useState<string[]>([]);
-  console.log("menu[category]@@@@@@@@@@", menu[category] as string[]);
   const handleOnClickTitle = () => {
     setIsToggle(!isToggle);
   };
@@ -26,11 +23,6 @@ const List: React.FC<ListProps> = ({ category, postPaths }) => {
       route.push(url);
     }
   };
-
-  useEffect(() => {
-    setCurrentFolder(menu[category] as string[]);
-  }, [category, menu]);
-
   return (
     <li className="w-[calc(100%-0.5rem)] cursor-pointer">
       <div onClick={handleOnClickTitle}>
@@ -39,6 +31,7 @@ const List: React.FC<ListProps> = ({ category, postPaths }) => {
         ) : (
           <h3 className="h-[2.5rem] p-2 text-[1rem] font-[600] text-blog-white">
             {getFormatText(category)}
+            {`${2 * (Object.keys(currentFolder).length - 1)}rem`}
           </h3>
         )}
       </div>
