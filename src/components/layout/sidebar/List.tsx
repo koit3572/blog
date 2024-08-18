@@ -26,7 +26,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
   return (
     <li
       className="w-[calc(100%-0.5rem)] cursor-pointer"
-      onClick={() => console.log(category)}
+      onClick={() => console.log(category, currentFolder)}
     >
       <div onClick={handleOnClickTitle}>
         {isToggle ? (
