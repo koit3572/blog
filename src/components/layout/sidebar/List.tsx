@@ -3,16 +3,18 @@ import React, { useState } from "react";
 import Title from "./Title";
 import { getFormatText } from "@/lib/post";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useAppSelector } from "@/hooks/redux";
 interface ListProps {
   category: string;
-  currentFolder: string[];
   postPaths: string[];
 }
-const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
+const List: React.FC<ListProps> = ({ category, postPaths }) => {
+  const { menu } = useAppSelector((state) => state.postSlice);
   const route = useRouter();
   const query = useSearchParams().get("category");
   const params = usePathname();
   const [isToggle, setIsToggle] = useState<boolean>(false);
+  const [currentFolder, _] = useState<string[]>(menu[category] as string[]);
   const handleOnClickTitle = () => {
     setIsToggle(!isToggle);
   };
