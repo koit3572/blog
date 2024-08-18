@@ -30,7 +30,7 @@ Layout.getInitialProps = wrapper.getInitialAppProps(
       if (
         Object.keys((store.getState() as RootState).postSlice.menu).length === 0
       ) {
-        const res = await fetch(process.env.API_APP_URL as string);
+        const res = await fetch("http://localhost:3000/api/app"); //process.env.API_APP_URL as string
         const app: ApiResApp = await res.json();
         store.dispatch(
           setPostData({
