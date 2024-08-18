@@ -7,7 +7,9 @@
 ## markdown
 
 - npm i gray-matter
-
+- npm i react-markdown
+- npm i rehype-highlight
+- npm i remark-gfm
 ## tailwindcss
 
 - npm i tailwind-scrollbar-hide
