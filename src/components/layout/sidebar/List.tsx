@@ -15,6 +15,7 @@ const List: React.FC<ListProps> = ({ category, postPaths }) => {
   const params = usePathname();
   const [isToggle, setIsToggle] = useState<boolean>(false);
   const [currentFolder, _] = useState<string[]>(menu[category] as string[]);
+  console.log("menu[category]@@@@@@@@@@", menu[category] as string[]);
   const handleOnClickTitle = () => {
     setIsToggle(!isToggle);
   };
