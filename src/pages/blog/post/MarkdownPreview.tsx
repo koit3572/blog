@@ -29,7 +29,7 @@ const MarkdownPreview: React.FC<IMarkdownPreview> = ({ post }) => {
     });
     console.log(post);
     setSpyOffsetTops([...spyOffsetTops]);
-  }, []);
+  }, [post]);
   return (
     <div className="max-w-[100vw]">
       <div ref={divRef} className="flex flex-col items-center">
