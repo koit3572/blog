@@ -31,7 +31,6 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
         ) : (
           <h3 className="h-[2.5rem] p-2 text-[1rem] font-[600] text-blog-white">
             {getFormatText(category)}
-            {`${2 * (Object.keys(currentFolder).length - 1)}rem`}
           </h3>
         )}
       </div>
