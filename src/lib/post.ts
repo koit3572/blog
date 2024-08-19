@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
-import { IMenu, IPosts, postInfoKeys } from "@/types/post";
+import { IMenu, IPosts } from "@/types/post";
 
 // post가 들어있는 폴더와 파일이 들어있는 root폴더 경로 반환
 const rootPath = path.join(process.cwd(), "src/post");
@@ -80,7 +80,7 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
       ...postsAcc,
       [postPath]: {
         path: postPath,
-        title: "title",
+        title: title,
         discription: postInfo.data.discription,
         writer: "koit",
         createdAt: postInfo.data.createdAt,
