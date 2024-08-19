@@ -15,7 +15,7 @@ const getPostInfo = (postPath: string) => {
 
 //객체 구조를 path로 변경하여 string[]로 반환
 export const getPostPaths = (postPath: string = "") => {
-  const fullPath = path.join(rootPath, postPath);
+  const fullPath = path.join(rootPath, postPath).replaceAll("/", "\\");
   const rootDirs = fs.readdirSync(fullPath);
   const postPaths: string[] = rootDirs.reduce(
     (postPathsAcc: string[], rootDir: string) => {
