@@ -38,7 +38,7 @@ export const getPostPaths = (postPath: string = "") => {
   return postPaths;
 };
 
-export function getFormatTitle(title: string[] | string){
+export const getFormatTitle = (title: string[] | string) => {
   const defaultTitle = typeof title === "object" ? title : title.split("\\");
   const formatTitle = defaultTitle.reduce((titleAcc, text, i) => {
     const formatText = getFormatText(text);
@@ -80,7 +80,7 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
       ...postsAcc,
       [postPath]: {
         path: postPath,
-        title: title,
+        title: "title",
         discription: postInfo.data.discription,
         writer: "koit",
         createdAt: postInfo.data.createdAt,
@@ -112,7 +112,7 @@ export const getFilterPosts = (path: string, posts: IPosts = getPosts()) => {
 };
 
 // category및 post의 넘버링 및 .md 삭제
-export function getFormatText(text: string){
+export const getFormatText = (text: string) => {
   const formatText = text.replace(/(\.md)$/, "").replace(/^([1-9]+\.)/, "");
   return formatText;
 };
