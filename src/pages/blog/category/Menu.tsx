@@ -12,7 +12,7 @@ const Menu = () => {
   const category = useSearchParams().get("category")!;
   const [currentIndex, setCurrentIndex] = useState<number>(1);
   const [filterPosts, setFilterPosts] = useState<IPosts>(
-    getFilterPosts(category, posts),
+    getFilterPosts(category.replaceAll("\\", "/"), posts),
   );
   useEffect(() => {
     setFilterPosts(getFilterPosts(category, posts));
