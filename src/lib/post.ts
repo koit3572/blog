@@ -4,7 +4,7 @@ import matter from "gray-matter";
 import { IMenu, IPosts } from "@/types/post";
 
 // post가 들어있는 폴더와 파일이 들어있는 root폴더 경로 반환
-const rootPath = path.join(process.cwd(), "src/post").replaceAll("\\", "/");
+const rootPath = path.join(process.cwd(), "src/post");
 
 // .md파일 Javascript 객체로 변환
 const getPostInfo = (postPath: string) => {
@@ -15,17 +15,13 @@ const getPostInfo = (postPath: string) => {
 
 //객체 구조를 path로 변경하여 string[]로 반환
 export const getPostPaths = (postPath: string = "") => {
-  const fullPath = path.join(rootPath, postPath).replaceAll("\\", "/");
+  const fullPath = path.join(rootPath, postPath);
   const rootDirs = fs.readdirSync(fullPath);
   const postPaths: string[] = rootDirs.reduce(
     (postPathsAcc: string[], rootDir: string) => {
-      const currentPostPath = path
-        .join(postPath, rootDir)
-        .replaceAll("\\", "/");
+      const currentPostPath = path.join(postPath, rootDir);
 
-      const currentFullPath = path
-        .join(fullPath, rootDir)
-        .replaceAll("\\", "/");
+      const currentFullPath = path.join(fullPath, rootDir);
 
       const isDirectory = fs.statSync(currentFullPath).isDirectory();
       if (isDirectory) {
@@ -65,7 +61,7 @@ export const getFormatTitle = (title: string[] | string) => {
 // postPath배열을 postPath:postInfo 구조의 객체 반환
 export const getPosts = (postPaths: string[] = getPostPaths()) => {
   const posts = postPaths.reduce((postsAcc: IPosts, postPath: string) => {
-    const fullPath = path.join(rootPath, postPath).replaceAll("\\", "/");
+    const fullPath = path.join(rootPath, postPath);
     const postInfo = getPostInfo(fullPath);
     const category = postPath
       .split("/")
@@ -127,7 +123,7 @@ export const getFormatText = (text: string) => {
 export const getMenu = (): IMenu => {
   const rootDirNameList = fs.readdirSync(rootPath);
   const menu: IMenu = rootDirNameList.reduce((acc: IMenu, DirName: string) => {
-    const curDirPath = path.join(rootPath, DirName).replaceAll("\\", "/");
+    const curDirPath = path.join(rootPath, DirName);
     const curDirNameLsit = fs.readdirSync(curDirPath);
     return (acc = {
       ...acc,
