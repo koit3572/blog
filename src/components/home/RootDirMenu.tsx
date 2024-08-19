@@ -81,7 +81,7 @@ const RootDirMenu = () => {
                         {(menu[dirName] as string[]).map((childDirName, i) => (
                           <Link
                             key={i}
-                            href={`/blog/category/?category="${dirName}\\${childDirName}"`}
+                            href={`/blog/category/?category="${dirName}/${childDirName}"`}
                             className="flex h-[6em] w-[6rem] items-center justify-center rounded-md bg-gray-300 font-bold text-[#333] hover:cursor-pointer"
                           >
                             {getFormatText(childDirName)}
