@@ -124,7 +124,7 @@ const Search = () => {
           {currentSearch.length === 0 ? (
             recentSearchHistory.length !== 0 ? (
               <div className="flex w-full flex-col items-center justify-center">
-                <h3>최근 검색 기록 {currentSearch}</h3>
+                <h3>최근 검색 기록</h3>
                 {recentSearchHistory.map((search: string, i: number) => (
                   <div
                     key={i}

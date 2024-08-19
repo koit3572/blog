@@ -41,7 +41,7 @@ export const getPostPaths = (postPath: string = "") => {
 };
 
 export const getFormatTitle = (title: string[] | string) => {
-  const defaultTitle = typeof title === "object" ? title : title.split("/");
+  const defaultTitle = typeof title === "object" ? title : title.split("\\");
   const formatTitle = defaultTitle.reduce((titleAcc, text, i) => {
     const formatText = getFormatText(text);
     if (i !== 0) {
