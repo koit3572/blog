@@ -12,6 +12,7 @@ import { getFormatText } from "@/lib/post";
 import { IoMdArrowDropleft } from "react-icons/io";
 import { IoMdArrowDropright } from "react-icons/io";
 import Link from "next/link";
+import path from "path";
 
 const rootDirDiscription = {
   "1.개요":
@@ -81,7 +82,7 @@ const RootDirMenu = () => {
                         {(menu[dirName] as string[]).map((childDirName, i) => (
                           <Link
                             key={i}
-                            href={`/blog/category/?category="${dirName}\\${childDirName}"`}
+                            href={`/blog/category/?category="${path.join(dirName, childDirName)}"`}
                             className="flex h-[6em] w-[6rem] items-center justify-center rounded-md bg-gray-300 font-bold text-[#333] hover:cursor-pointer"
                           >
                             {getFormatText(childDirName)}

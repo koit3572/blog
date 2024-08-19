@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Title from "./Title";
 import { getFormatText } from "@/lib/post";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import path from "path";
 interface ListProps {
   category: string;
   currentFolder: string[];
@@ -18,7 +19,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
   };
   const handleOnClickItem = (category: string, item: string) => {
     const curUrl = `${params}?category=${query}`;
-    const url = `/blog/category?category=${category}\\${item}`;
+    const url = `/blog/category?category=${path.join(category, item)}`;
     if (curUrl !== url) {
       route.push(url);
     }
