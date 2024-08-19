@@ -28,9 +28,7 @@ const PostCard: React.FC<IPostCardProps> = ({
 }) => {
   const router = useRouter();
   const handlerOnClickCard = () => {
-    router.push(
-      `/blog/post/path="${encodeURI(fullPath).replaceAll("&", "%26")}"`,
-    );
+    router.push(`/blog/post/path="${fullPath.replaceAll("&", "%26")}"`);
   };
   return (
     <div

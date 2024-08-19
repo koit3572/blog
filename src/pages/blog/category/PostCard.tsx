@@ -9,9 +9,7 @@ export interface IPostCardProps {
 const PostCard: React.FC<IPostCardProps> = ({ postCardData, fullPath }) => {
   const router = useRouter();
   const handlerOnClickCard = () => {
-    router.push(
-      `/blog/post?path=${encodeURI(fullPath).replaceAll("&", "%26")}`,
-    );
+    router.push(`/blog/post?path=${fullPath.replaceAll("&", "%26")}`);
   };
   return (
     <div className="relative h-[15rem] w-full rounded-lg bg-blog-white transition-transform duration-300 hover:scale-105 hover:cursor-pointer">
