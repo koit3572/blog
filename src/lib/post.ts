@@ -39,8 +39,7 @@ export const getPostPaths = (postPath: string = "") => {
 };
 
 export const getFormatTitle = (title: string[] | string) => {
-  const defaultTitle =
-    typeof title === "object" ? title : title.split(/(\\)|(\/)/);
+  const defaultTitle = typeof title === "object" ? title : title.split(/\\|\//);
   const formatTitle = defaultTitle.reduce((titleAcc, text, i) => {
     const formatText = getFormatText(text);
     if (i !== 0) {
@@ -63,7 +62,7 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
     const fullPath = path.join(rootPath, postPath);
     const postInfo = getPostInfo(fullPath);
     const category = postPath
-      .split(/(\\)|(\/)/)
+      .split(/\\|\//)
       .filter((value) => value !== "")
       .reduce((categoryAcc, text) => {
         const formatText = getFormatText(text);
