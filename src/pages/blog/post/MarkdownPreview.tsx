@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation";
 import { useAppSelector } from "@/hooks/redux";
 
 const MarkdownPreview = () => {
-  const query = useSearchParams().get("path")?.replaceAll("%5C", "/");
+  const query = useSearchParams().get("path");
   const { posts } = useAppSelector((state) => state.postSlice);
   const [post, setPost] = useState(posts[query as keyof typeof posts]);
   const divRef = useRef<HTMLDivElement>(null);

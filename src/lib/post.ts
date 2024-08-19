@@ -20,9 +20,7 @@ export const getPostPaths = (postPath: string = "") => {
   const postPaths: string[] = rootDirs.reduce(
     (postPathsAcc: string[], rootDir: string) => {
       const currentPostPath = path.join(postPath, rootDir);
-
       const currentFullPath = path.join(fullPath, rootDir);
-
       const isDirectory = fs.statSync(currentFullPath).isDirectory();
       if (isDirectory) {
         return (postPathsAcc = [
@@ -64,7 +62,7 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
     const fullPath = path.join(rootPath, postPath);
     const postInfo = getPostInfo(fullPath);
     const category = postPath
-      .split("/")
+      .split("\\")
       .filter((value) => value !== "")
       .reduce((categoryAcc, text) => {
         const formatText = getFormatText(text);
