@@ -18,7 +18,7 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
   };
   const handleOnClickItem = (category: string, item: string) => {
     const curUrl = `${params}?category=${query}`;
-    const url = `/blog/category?category=${category}\\${item}`;
+    const url = `/blog/category?category=${category}/${item}`;
     if (curUrl !== url) {
       route.push(url);
     }
