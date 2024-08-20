@@ -13,8 +13,8 @@ interface SideItemProps {
 const SideItem: React.FC<SideItemProps> = ({ Icon, title, count }) => {
   return (
     <div className="flex h-[6rem] w-[25%] items-center justify-center gap-2 rounded-b-3xl bg-blog-white xl:h-[12rem] xl:w-full xl:flex-col xl:rounded-l-[0] xl:rounded-tr-3xl xl:pl-[60%]">
-      <Icon className="pointer-events-none text-[1rem] font-bold sm:text-[1rem]" />
-      <p className="flex flex-col items-center text-[0.5rem] font-bold sm:text-[1rem]">
+      <Icon className="pointer-events-none text-[1rem] font-bold" />
+      <p className="flex flex-col items-center text-[0.8rem] font-bold">
         <span>
           {count ? count : "??"} {title === "총 포스팅" ? "개" : "일"}
         </span>

@@ -26,11 +26,11 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
   };
   return (
     <li className="w-[calc(100%-0.5rem)] cursor-pointer">
-      <div onClick={handleOnClickTitle}>
+      <div onClick={handleOnClickTitle} className="text-[1rem]">
         {isToggle ? (
           <Title title={getFormatText(category)} />
         ) : (
-          <h3 className="h-[2.5rem] p-2 text-[1rem] font-[600] text-blog-white">
+          <h3 className="h-[2.5rem] p-2 font-[600] text-blog-white">
             {getFormatText(category)}
           </h3>
         )}
@@ -39,18 +39,18 @@ const List: React.FC<ListProps> = ({ category, currentFolder, postPaths }) => {
         className="overflow-hidden bg-blog-white transition-[height]"
         style={{
           height: isToggle
-            ? `${2 * Object.keys(currentFolder).length}rem`
+            ? `${1.7 * Object.keys(currentFolder).length}rem`
             : "0",
         }}
       >
         {currentFolder.map((item, i) => (
           <li
             key={i}
-            className="flex items-center gap-1 p-1"
+            className="flex items-center gap-1 p-1 text-[0.8rem]"
             onClick={() => handleOnClickItem(category, item)}
           >
             <h4>{getFormatText(item)}</h4>
-            <p className="text-[0.8rem] opacity-80">
+            <p className="opacity-80">
               {`(${
                 postPaths.filter(
                   (postPath) =>

@@ -42,12 +42,17 @@ const SideBarContainer: React.FC<SideBarContainerProps> = ({ className }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size, path, query]);
 
+  // ? size.width > WIDTH_RESPONSE_STANDARD
+  //             ? "15.5rem"
+  //             : "30.5rem"
   return (
     <>
       <div
         ref={sideContainerRef}
         className={`${className}`}
-        style={{ width: isSideBarToggle ? "15.5rem" : "0" }}
+        style={{
+          width: isSideBarToggle ? "15.5rem" : "0",
+        }}
       >
         <div className="h-full w-[15rem] bg-slate-600">
           <Profile className="relative flex h-[18rem] flex-col items-center bg-blog-white" />

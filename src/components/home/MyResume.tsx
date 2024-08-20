@@ -45,7 +45,7 @@ const MyResume = () => {
           </div>
           <Link
             ref={firstFloatEl}
-            className="absolute left-[0] z-10 flex h-[25rem] w-[25rem] flex-col items-center justify-center rounded-[50%] bg-slate-100 xl:left-[10rem]"
+            className="xlw-[25rem] absolute left-[0] z-10 flex h-[23rem] w-[23rem] flex-col items-center justify-center rounded-[50%] bg-slate-100 xl:left-[10rem] xl:h-[25rem]"
             href={"/#"}
             target="_blank"
           >
@@ -54,7 +54,7 @@ const MyResume = () => {
           </Link>
           <Link
             ref={secondFloatEl}
-            className="absolute bottom-[10rem] right-[5rem] z-10 flex h-[20rem] w-[20rem] flex-col items-center justify-center rounded-[50%] bg-slate-100 xl:left-[5rem] xl:top-[25rem]"
+            className="absolute bottom-[10rem] right-[5rem] z-10 flex h-[18rem] w-[18rem] flex-col items-center justify-center rounded-[50%] bg-slate-100 xl:left-[5rem] xl:top-[25rem] xl:h-[20rem] xl:w-[20rem]"
             href={"https://github.com/koit3572"}
             target="_blank"
           >
