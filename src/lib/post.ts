@@ -96,11 +96,15 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
 };
 
 // 조건(path)에 맞는 post만 따로 모아 객체로 반환
-export const getFilterPosts = (path: string, posts: IPosts = getPosts()) => {
-  // 1.개요/IT지식
+export const getFilterPosts = (
+  rootPath: string,
+  posts: IPosts = getPosts(),
+) => {
   const keys = Object.keys(posts);
   const filterPosts = keys.reduce((filterPostsAcc, key) => {
-    if (key.indexOf(path) !== -1) {
+    const formatRootPath = getFormatPath(rootPath);
+    const formatKey = getFormatPath(key);
+    if (formatKey.includes(formatRootPath)) {
       return (filterPostsAcc = {
         ...filterPostsAcc,
         [key]: posts[key],
@@ -109,6 +113,20 @@ export const getFilterPosts = (path: string, posts: IPosts = getPosts()) => {
     return filterPostsAcc;
   }, {} as IPosts);
   return filterPosts;
+};
+
+// path.join을 통해 경로 포맷
+export const getFormatPath = (postPath: string | string[]) => {
+  const defaultPath =
+    typeof postPath === "string" ? postPath.split(/\\|\//) : postPath;
+  const formatPath = defaultPath.reduce(
+    (formatPathAcc: string, text: string) => {
+      return (formatPathAcc =
+        formatPathAcc === "" ? text : path.join(formatPathAcc, text));
+    },
+    "",
+  );
+  return formatPath;
 };
 
 // category및 post의 넘버링 및 .md 삭제

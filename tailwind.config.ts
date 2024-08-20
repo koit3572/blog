@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "blog-white": "#f1f5f9",
+        "blog-white": "#e2e8f0",
         "blog-black": "#333",
       },
       backgroundImage: {

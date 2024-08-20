@@ -7,12 +7,15 @@ import { setIsMainSideMenuToggle } from "@/store/toggle/toggleSlice";
 import React, { useEffect, useRef } from "react";
 import Profile from "./Profile";
 import Menu from "./Menu";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface SideBarContainerProps {
   className: string;
 }
 
 const SideBarContainer: React.FC<SideBarContainerProps> = ({ className }) => {
+  const path = usePathname();
+  const query = useSearchParams();
   const sideContainerRef = useRef<HTMLDivElement>(null);
   const [componentRef, size] = useComponentSize({ throttleTime: 100 });
   const dispatch = useAppDispatch();
@@ -37,7 +40,7 @@ const SideBarContainer: React.FC<SideBarContainerProps> = ({ className }) => {
       dispatch(setIsMainSideMenuToggle({ isToggle: false }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [size]);
+  }, [size, path, query]);
 
   return (
     <>

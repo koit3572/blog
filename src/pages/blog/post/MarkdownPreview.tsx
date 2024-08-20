@@ -35,7 +35,7 @@ const MarkdownPreview = () => {
     setPost(posts[query as keyof typeof posts]);
   }, [posts, query]);
   return (
-    <div className="max-w-[100vw]">
+    <div className="max-w-[calc(100vw-3rem)]">
       <div ref={divRef} className="flex flex-col items-center">
         <div className="mb-12 flex flex-col items-center gap-3 border-b-[1.5px] border-[#1e293b] border-opacity-35 py-12">
           <h1 className="z-[30] w-full text-center text-[4rem] font-[900] text-slate-800">
@@ -61,7 +61,7 @@ const MarkdownPreview = () => {
             {post.discription}
           </p>
         </div>
-        <div className="mb-12 flex h-[450px] w-[800px] max-w-[100vw] flex-col items-center">
+        <div className="flex max-h-[250px] w-[50rem] max-w-[100vw] flex-col items-center">
           <h1 className="w-full rounded-t-lg bg-slate-600 px-3 py-2 text-[2rem] font-[600] text-gray-200">
             목차
           </h1>
@@ -126,13 +126,25 @@ const MarkdownPreview = () => {
               </h1>
             );
           },
+          p({ children }) {
+            return <p className="px-6 text-[1.5rem]">{children}</p>;
+          },
           ul({ children }) {
             return (
-              <ul className="px-12 text-[1.5rem] font-[600]">{children}</ul>
+              <ul className="list-disc px-12 text-[1.5rem] font-[600]">
+                {children}
+              </ul>
+            );
+          },
+          ol({ children }) {
+            return (
+              <ol className="list-decimal px-12 text-[1.5rem] font-[600]">
+                {children}
+              </ol>
             );
           },
           li({ children }) {
-            return <li className="list-disc">{children}</li>;
+            return <li>{children}</li>;
           },
           table({ children }) {
             return (

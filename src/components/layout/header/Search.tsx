@@ -69,7 +69,7 @@ const Search = () => {
     getSearchResult("");
     setCurrentSearch("");
     dispatch(addRecentSearchHistory(getFormatTitle(path)));
-    route.push(`/blog/post/?path=${path}`);
+    route.push(`/blog/post/?path=${decodeURI(path.replaceAll("&", "%26"))}`);
   };
   // const onSubmit = async (data: IFormValues) => {
   //   console.log(data,currentSearch)
@@ -112,15 +112,12 @@ const Search = () => {
               inputRef.removeEventListener("focus", focusListener);
             };
             inputRef.addEventListener("focus", focusListener);
-            // return () => {
-            //   inputRef.removeEventListener("focus", focusListener);
-            // };
           }
         }}
         onChange={(inputOnChange) => onChangeInput(inputOnChange)}
       />
       {isFocuse && (
-        <div className="absolute m-12 max-h-[400px] w-[450px] overflow-y-auto rounded-lg bg-gray-100 p-3">
+        <div className="absolute m-12 max-h-[60vh] w-[450px] max-w-[calc(100vw-3rem)] overflow-y-auto rounded-lg bg-gray-100 p-3">
           {currentSearch.length === 0 ? (
             recentSearchHistory.length !== 0 ? (
               <div className="flex w-full flex-col items-center justify-center">
@@ -200,8 +197,8 @@ const Search = () => {
       >
         <FaSearch size={18} className="pointer-events-none" />
       </button> */}
-      <div className="close absolute right-[0.25rem] top-[0.45rem] opacity-35">
-        <FaSearch size={18} className="pointer-events-none" />
+      <div className="close absolute right-[0.45rem] top-[0.50rem] h-[1.2rem] w-[1.2rem] opacity-35">
+        <FaSearch className="pointer-events-none" />
       </div>
     </form>
   );

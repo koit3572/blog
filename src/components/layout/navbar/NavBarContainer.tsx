@@ -3,6 +3,7 @@ import * as _ from "lodash";
 import { HiMenu } from "react-icons/hi";
 import { useAppDispatch } from "@/hooks/redux";
 import { setIsMainSideMenuToggle } from "@/store/toggle/toggleSlice";
+import { usePathname } from "next/navigation";
 
 interface NavBarContainerProps {
   style: React.CSSProperties;
@@ -12,6 +13,12 @@ const NavBarContainer: React.FC<NavBarContainerProps> = ({
   style,
   className,
 }) => {
+  const title = usePathname()
+    .split("/")
+    .reduce(
+      (titleAcc, text) => (titleAcc = `${titleAcc} ${text.toUpperCase()}`),
+      "",
+    );
   const lastScrollTop = useRef<number>(0);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const dispatch = useAppDispatch();
@@ -34,7 +41,7 @@ const NavBarContainer: React.FC<NavBarContainerProps> = ({
       style={style}
       className={`${className} ${isHidden ? "pointer-events-none opacity-0" : "opacity-100"} transition-[opacity] duration-300`}
     >
-      <div className="flex h-full w-full items-center justify-between rounded-lg border-[0.13rem] border-slate-500 bg-slate-700 px-4 font-bold text-blog-white opacity-[95%]">
+      <div className="flex h-[4rem] w-full items-center justify-between rounded-lg border-[0.13rem] border-slate-500 bg-slate-700 px-4 font-bold text-blog-white opacity-[95%]">
         <div
           className="hover:cursor-pointer xl:hidden"
           onClick={handleOnClickHiMenu}
@@ -42,7 +49,7 @@ const NavBarContainer: React.FC<NavBarContainerProps> = ({
           <HiMenu className="pointer-events-none" size={"1.5rem"} />
         </div>
         <p className="hidden xl:block"> </p>
-        <p>Blog Home</p>
+        <p>{title !== "  " ? title : "BLOG"}</p>
         <p> </p>
       </div>
     </div>

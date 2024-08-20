@@ -137,7 +137,7 @@ const HeaderContainer: React.FC<HeaderContainerProps> = ({
           <span className="text-[1.5rem]">한번의 기록으로 영원한 기억을</span>
         </p>
         <Search />
-        <div className="text-center font-serif text-[#fff]">
+        <div className="text-center font-serif text-blog-white">
           <h3>&quot;{quote.quote}&quot;</h3>
           <p>-{quote.author}-</p>
         </div>

@@ -10,14 +10,6 @@ interface IPostCardProps {
   writer: string;
   fullPath: string;
 }
-const getFormatDiscription = (text: string) => {
-  const discription = text || "해당 포스트에 대한 설명이 없습니다.";
-  const formatDiscription =
-    discription.length > 120
-      ? discription.substring(0, 120) + "..."
-      : discription;
-  return formatDiscription;
-};
 const PostCard: React.FC<IPostCardProps> = ({
   title,
   category,
@@ -29,13 +21,13 @@ const PostCard: React.FC<IPostCardProps> = ({
   const router = useRouter();
   const handlerOnClickCard = () => {
     router.push(
-      `/blog/post/path="${decodeURI(fullPath.replaceAll("&", "%26"))}"`,
+      `/blog/post?path=${decodeURI(fullPath.replaceAll("&", "%26"))}`,
     );
   };
   return (
     <div
       onClick={handlerOnClickCard}
-      className="flex h-[12rem] w-full gap-3 border-b-2 border-gray-400 p-4 px-2 hover:cursor-pointer"
+      className="flex h-[12rem] w-full gap-3 border-b-[0.15rem] border-gray-400 p-4 px-2 hover:cursor-pointer"
     >
       <div className="h-[10rem] w-[10rem] bg-gray-400"></div>
       <div className="w-[calc(100%-11rem)] overflow-hidden">

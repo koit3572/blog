@@ -16,7 +16,7 @@ interface TriangleDivProps {
 }
 const TriangleDiv: React.FC<TriangleDivProps> = ({ tailwindCss }) => (
   <div
-    className={`${tailwindCss} border-b-[1.5rem] border-t-0 border-x-transparent`}
+    className={`${tailwindCss} border-b-[1rem] border-t-0 border-x-transparent`}
   />
 );
 const PostListContainer: React.FC<PostListContainerProps> = ({
@@ -26,17 +26,17 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(1);
   return (
-    <div className="h-[1000px] w-[1100px] max-w-[calc(100vw-6rem)] overflow-hidden">
+    <div className="h-[65rem] w-[70rem] max-w-[calc(100vw-3rem)] overflow-hidden">
       <div className="relative flex w-full flex-col items-center">
         <div className="relative flex h-[10rem] w-full justify-center rounded-t-3xl bg-slate-400">
           <TriangleDiv
             tailwindCss={
-              "absolute bottom-0 h-[1.5rem] border-slate-700 border-x-[550px]"
+              "absolute bottom-0 h-[1.5rem] border-slate-700 border-x-[35rem]"
             }
           />
         </div>
         <TriangleDiv
-          tailwindCss={"z-10 h-[1.5rem] border-slate-800 border-x-[550px]"}
+          tailwindCss={"z-10 h-[1.5rem] border-slate-800 border-x-[35rem]"}
         />
         <div className="absolute top-[2rem] flex h-[10rem] w-[85%] flex-col items-center justify-center rounded-t-3xl bg-slate-300 pb-[1.5rem]">
           <h3 className="text-[1.5rem] font-bold lg:text-[2rem] xl:text-[2.5rem]">

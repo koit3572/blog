@@ -13,7 +13,7 @@ const BackgroundSvg: React.FC<BackgourndSvg> = ({ className }) => {
       preserveAspectRatio="none"
       viewBox="0 0 200 200"
       width="100%"
-      height="100%"
+      height="101%"
       version="1.1"
     >
       <path
@@ -45,7 +45,7 @@ const BackgroundSvg: React.FC<BackgourndSvg> = ({ className }) => {
         strokeLinejoin="miter"
       />
       <path
-        fill={urlPath !== "/blog/post" ? "#334155" : "#f1f5f9"}
+        fill={urlPath !== "/blog/post" ? "#334155" : "#e2e8f0"}
         d={`
             M 0 200
             L 0 180
