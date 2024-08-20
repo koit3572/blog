@@ -100,9 +100,9 @@ const RootDirMenu = () => {
         </div>
       </div>
 
-      <div className="flex w-[100vw] justify-center bg-slate-800">
+      <div className="flex h-[5rem] w-[100vw] justify-center bg-slate-800">
         <Swiper
-          className="h-[5rem] max-w-[50rem] xl:w-[100vw] 2xl:max-w-[90rem]"
+          className="h-full w-full max-w-[50rem] xl:max-w-[90rem]"
           modules={[FreeMode, Navigation, Thumbs]}
           onSwiper={setSubSwiper}
           slidesPerView={8}
