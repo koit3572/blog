@@ -1,12 +1,14 @@
 import {
   combineReducers,
   configureStore,
+  EnhancedStore,
   PayloadAction,
+  Reducer,
   Store,
 } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
+import { Context, createWrapper, HYDRATE, MakeStore } from "next-redux-wrapper";
 import postSlice from "@/store/post/postSlice";
 import { IInitialState as PostState } from "@/types/post";
 import toggleSlice, {
@@ -15,31 +17,13 @@ import toggleSlice, {
 import { IInitialState as SearchSlice } from "@/store/search/searchSlice";
 import searchSlice from "./search/searchSlice";
 import logger from "redux-logger";
+import storage from "redux-persist/lib/storage";
 
 export interface RootState {
   postSlice: PostState;
   toggleSlice: ToggleState;
   searchSlice: SearchSlice;
-  type: string;
 }
-
-const createNoopStorage = () => {
-  return {
-    getItem(_key: any) {
-      return Promise.resolve(null);
-    },
-    setItem(_key: any, value: any) {
-      return Promise.resolve(value);
-    },
-    removeItem(_key: any) {
-      return Promise.resolve();
-    },
-  };
-};
-const storage =
-  typeof window === "undefined"
-    ? createNoopStorage()
-    : createWebStorage("local");
 
 const persistConfig = {
   key: "blog",
@@ -47,7 +31,10 @@ const persistConfig = {
   whitelist: ["postSlice", "searchSlice"], //"postSlice", "searchSlice"
 };
 
-const rootReducer = (state: any, action: PayloadAction<RootState>) => {
+const rootReducer: Reducer<RootState, PayloadAction<RootState>> = (
+  state,
+  action,
+) => {
   switch (action.type) {
     case HYDRATE:
       return {
@@ -65,18 +52,22 @@ const rootReducer = (state: any, action: PayloadAction<RootState>) => {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const makeStore = () =>
-  configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-      }), //.concat(logger),
-    devTools: process.env.NODE_ENV !== "production",
-  });
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }).concat(logger),
+  devTools: process.env.NODE_ENV !== "production",
+});
+const setupStore = (context: Context): EnhancedStore => store;
+export const makeStore: MakeStore<any> = (context: Context) =>
+  setupStore(context);
+
+export const persistor = persistStore(store);
 export const wrapper = createWrapper<Store<RootState>>(makeStore, {
   debug: process.env.NODE_ENV !== "production",
 });
 
-export type AppStore = ReturnType<typeof makeStore>;
+export type AppStore = typeof store;
 export type AppDispatch = AppStore["dispatch"];

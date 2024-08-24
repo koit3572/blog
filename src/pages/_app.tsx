@@ -10,7 +10,7 @@ import type { AppContext, AppInitialProps, AppProps } from "next/app";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { setPostData } from "@/store/post/postSlice";
-import { wrapper, RootState } from "@/store";
+import { wrapper, RootState, persistor } from "@/store";
 import { ApiResApp, PostInfo } from "@/types/post";
 import { persistStore } from "redux-persist";
 
@@ -30,7 +30,7 @@ Layout.getInitialProps = wrapper.getInitialAppProps(
       if (
         Object.keys((store.getState() as RootState).postSlice.menu).length === 0
       ) {
-        const res = await fetch(process.env.API_APP_URL as string); //process.env.API_APP_URL as string http://localhost:3000/api/app
+        const res = await fetch(process.env.API_APP_URL as string);
         const app: ApiResApp = await res.json();
         store.dispatch(
           setPostData({
@@ -62,7 +62,6 @@ Layout.getInitialProps = wrapper.getInitialAppProps(
 
 function Layout({ Component, pageProps }: AppProps<ApiResApp>) {
   const { store, props } = wrapper.useWrappedStore(pageProps);
-  const persistor = persistStore(store);
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -79,7 +78,7 @@ function Layout({ Component, pageProps }: AppProps<ApiResApp>) {
               className="h-[50rem] w-full"
             />
             <SectionContainer className="z-[996] min-h-[calc(100vh-50rem)] w-full bg-slate-700">
-              <Component {...props.pageProps} />
+              <Component {...props} />
             </SectionContainer>
             <FooterContainter />
           </SectionContainer>
