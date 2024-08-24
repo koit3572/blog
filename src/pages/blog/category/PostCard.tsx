@@ -2,11 +2,12 @@
 import React from "react";
 import { PostInfo } from "@/types/post";
 import { useRouter } from "next/navigation";
-import Tooltip from "./Tooltip";
+import { getFormatDiscription, getFormatTitle } from "@/lib/post";
 export interface IPostCardProps {
   postCardData: PostInfo;
   fullPath: string;
 }
+
 const PostCard: React.FC<IPostCardProps> = ({ postCardData, fullPath }) => {
   const router = useRouter();
   const handlerOnClickCard = () => {
@@ -15,51 +16,28 @@ const PostCard: React.FC<IPostCardProps> = ({ postCardData, fullPath }) => {
     );
   };
   return (
-    <div className="relative h-[15rem] w-full rounded-lg bg-blog-white transition-transform duration-300 hover:z-10 hover:scale-105 hover:cursor-pointer">
+    <div className="relative h-[12rem] w-full rounded-lg bg-blog-white transition-transform duration-300 hover:z-10 hover:scale-105 hover:cursor-pointer xl:h-[15rem]">
       <div className="flex p-4" onClick={() => handlerOnClickCard()}>
-        <div className="absolute right-[0.6rem] top-[0.8rem]">
-          <Tooltip
-            target={
-              <div className="m-1 flex w-[1rem] flex-col items-center gap-[0.15rem] hover:cursor-pointer">
-                <div className="h-[0.3rem] w-[0.3rem] rounded-full bg-gray-400" />
-                <div className="h-[0.3rem] w-[0.3rem] rounded-full bg-gray-400" />
-                <div className="h-[0.3rem] w-[0.3rem] rounded-full bg-gray-400" />
-              </div>
-            }
-            contents={
-              <>
-                <p className="border-b-[0.1rem] border-b-gray-200 p-1">
-                  작성자 <br /> {postCardData.writer}
-                </p>
-                <p className="border-b-[0.1rem] border-b-gray-200 p-1">
-                  작성일시 <br /> {postCardData.createdAt}
-                </p>
-                <div className="p-1">
-                  <h4>tags</h4>
-                  <div className="text-[0.6rem] font-bold">
-                    {postCardData.tags.map((tag, i) => (
-                      <div
-                        key={i}
-                        className="m-[0.1rem] inline-block rounded-lg bg-gray-200 px-[0.4rem] py-[0.15rem] text-slate-800"
-                      >
-                        # {tag}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </>
-            }
-          />
-        </div>
-        <div className="full h-[13rem] w-[13rem] bg-slate-200">
+        <div className="full h-[10rem] w-[10rem] bg-slate-200 xl:h-[13rem] xl:w-[13rem]">
           {/* 추후 이미지 추가 */}
         </div>
-        <div className="flex w-[calc(100%-12rem)] flex-col p-2">
+        <div className="flex w-[calc(100%-12rem)] flex-col">
           <h2 className="overflow-hidden overflow-ellipsis text-nowrap text-[1.8rem] font-[600]">
-            {postCardData.title}
+            {postCardData.title.replace(/\[.+\]/, "")}
           </h2>
           <p>{postCardData.createdAt}</p>
-          <p className="break-words text-[1.2rem]">
+          <p className="flex whitespace-nowrap">
+            {postCardData.category.slice(0, -1).map((text, i) => (
+              <span className="text-[0.8rem] opacity-75" key={i}>
+                {text}
+                {postCardData.category.slice(0, -1).length - 1 !== i ? ">" : ""}
+              </span>
+            ))}
+          </p>
+          <p className="block break-words text-[1.2rem] xl:hidden">
+            {getFormatDiscription(postCardData.discription)}
+          </p>
+          <p className="hidden break-words text-[1.2rem] xl:block">
             {postCardData.discription}
           </p>
         </div>

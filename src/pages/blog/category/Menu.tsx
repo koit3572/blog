@@ -27,7 +27,7 @@ const Menu = () => {
     );
   }, [category, posts]);
   return (
-    <div className="w-[70rem] max-w-[calc(100vw-3rem)]">
+    <div className="w-[70rem] max-w-[calc(100vw-3rem)] py-12">
       <div className="absolute left-0 flex w-[100vw] flex-col items-center bg-slate-800 pl-0 text-blog-white transition-[padding] duration-300 xl:pl-[15rem]">
         <h1 className="p-6 text-[3rem] font-bold">
           {getFormatTitle(category)}

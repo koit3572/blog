@@ -100,9 +100,9 @@ const RootDirMenu = () => {
         </div>
       </div>
 
-      <div className="flex h-[5rem] w-[100vw] justify-center bg-slate-800">
+      <div className="hidden h-[5rem] w-[100vw] justify-center bg-slate-800 xl:flex">
         <Swiper
-          className="h-full w-full max-w-[60rem] xl:max-w-[90rem]"
+          className="flex h-full w-full max-w-[60rem] flex-col xl:max-w-[90rem]"
           modules={[FreeMode, Navigation, Thumbs]}
           onSwiper={setSubSwiper}
           slidesPerView={8}
@@ -112,7 +112,7 @@ const RootDirMenu = () => {
           {rootDirNames.map((dirName, i) => (
             <SwiperSlide key={i}>
               <div className="flex h-full w-full items-center justify-center px-6 text-gray-200 hover:cursor-pointer">
-                <h3 className="text-center text-[0.7rem] font-bold xl:text-[1rem]">
+                <h3 className="font-boldtext-[1rem] text-center">
                   {getFormatText(dirName)}
                 </h3>
               </div>

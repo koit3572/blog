@@ -1,7 +1,6 @@
 "use client";
 import { useAppSelector } from "@/hooks/redux";
 import useOnclickOutside from "@/hooks/useOnclickOutside";
-import { getFormatTitle } from "@/lib/post";
 import { getSearchRanking } from "@/lib/search";
 import {
   addRecentSearchHistory,
@@ -68,7 +67,7 @@ const Search = () => {
     setIsFocuse(false);
     getSearchResult("");
     setCurrentSearch("");
-    dispatch(addRecentSearchHistory(getFormatTitle(path)));
+    dispatch(addRecentSearchHistory(posts[path].title));
     route.push(`/blog/post/?path=${decodeURI(path.replaceAll("&", "%26"))}`);
   };
   // const onSubmit = async (data: IFormValues) => {
@@ -95,12 +94,12 @@ const Search = () => {
   return (
     <form
       ref={formRef}
-      className="relative flex flex-col items-center text-blog-black"
+      className="1.2rem relative flex flex-col items-center text-blog-black"
       // onSubmit={handleSubmit(onSubmit)}
     >
       <input
         id="search-input"
-        className="w-[250px] rounded-xl p-1 pl-2 pr-8 shadow-md outline-none focus:border"
+        className="w-[250px] rounded-xl p-1 pl-2 pr-8 text-[1.5rem] shadow-md outline-none focus:border"
         placeholder="통합 검색"
         autoComplete="off"
         {...register("search")}
@@ -117,8 +116,9 @@ const Search = () => {
         onChange={(inputOnChange) => onChangeInput(inputOnChange)}
       />
       {isFocuse && (
-        <div className="absolute m-12 max-h-[60vh] w-[450px] max-w-[calc(100vw-3rem)] overflow-y-auto rounded-lg bg-gray-100 p-3">
+        <div className="absolute m-14 max-h-[60vh] w-[450px] max-w-[calc(100vw-3rem)] overflow-y-auto rounded-lg bg-gray-100 p-3">
           {currentSearch.length === 0 ? (
+            // input에 아무런 입력값이 없을 때
             recentSearchHistory.length !== 0 ? (
               <div className="flex w-full flex-col items-center justify-center">
                 <h3>최근 검색 기록</h3>
@@ -145,9 +145,12 @@ const Search = () => {
                 ))}
               </div>
             ) : (
-              <div>최근 검색 기록이 없습니다.</div>
+              <div>
+                <p>최근 검색 기록이 없습니다.</p>
+              </div>
             )
           ) : (
+            // input에 한글자라도 입력이 되었을때
             <>
               {Object.keys(autoSearchComplete).length === 0 ? (
                 <div className="p-3 text-center">
@@ -169,13 +172,14 @@ const Search = () => {
                           onClickDirectRoute(search);
                         }}
                       >
-                        <p>{getFormatTitle(search)}</p>
-                        <div className="flex gap-1">
+                        <p>{posts[search].title}</p>
+                        <div className="flex h-[3rem] gap-1">
                           {autoSearchComplete[search].map(
                             (data: string, i: number) => (
                               <p
                                 key={i}
-                                className="rounded-lg bg-gray-700 p-1 px-2 text-[0.7rem] text-gray-200"
+                                className="h-[2rem] max-w-[7rem] overflow-hidden text-ellipsis text-nowrap rounded-lg bg-gray-700 p-1 px-2 text-[1rem] text-gray-200"
+                                title={data}
                               >
                                 {data}
                               </p>
@@ -197,8 +201,8 @@ const Search = () => {
       >
         <FaSearch size={18} className="pointer-events-none" />
       </button> */}
-      <div className="close absolute right-[0.45rem] top-[0.50rem] h-[1.2rem] w-[1.2rem] opacity-35">
-        <FaSearch className="pointer-events-none" />
+      <div className="close absolute right-[0.6rem] top-[0.6rem] h-[1.5rem] w-[1.5rem] opacity-35">
+        <FaSearch size={"1.5rem"} className="pointer-events-none" />
       </div>
     </form>
   );

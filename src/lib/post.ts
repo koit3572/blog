@@ -37,12 +37,15 @@ export const getPostPaths = (postPath: string = "") => {
   );
   return postPaths;
 };
-
-export const getFormatTitle = (title: string[] | string) => {
+export const getFileName = (postPath: string) => {
+  const fileName = path.parse(postPath).name;
+  return fileName;
+};
+export const getFormatTitle = (title: string[] | string, skip: number = 0) => {
   const defaultTitle = typeof title === "object" ? title : title.split(/\\|\//);
   const formatTitle = defaultTitle.reduce((titleAcc, text, i) => {
     const formatText = getFormatText(text);
-    if (i !== 0) {
+    if (i > skip) {
       if (i === defaultTitle.length - 1) {
         const resultText = `${formatText}`;
         return (titleAcc = titleAcc + resultText);
@@ -68,7 +71,7 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
         const formatText = getFormatText(text);
         return (categoryAcc = [...categoryAcc, formatText]);
       }, [] as string[]);
-    const title = getFormatTitle(category);
+    const title = getFormatTitle(category, 1);
     const relatedSearchTerms = postInfo.content
       .split("\n")
       .filter((text) => text.match(/^(#{2,6})/))
@@ -147,4 +150,15 @@ export const getMenu = (): IMenu => {
     });
   }, {});
   return menu;
+};
+
+export const getFormatDiscription = (text: string) => {
+  const discription = text || "해당 포스트에 대한 설명이 없습니다.";
+  const isOverFlow = discription!.length > 45;
+  const formatDiscription = isOverFlow
+    ? discription.length === 45
+      ? discription.substring(0, 45)
+      : discription.substring(0, 45) + "..."
+    : discription;
+  return formatDiscription;
 };

@@ -12,9 +12,9 @@ interface SideItemProps {
 }
 const SideItem: React.FC<SideItemProps> = ({ Icon, title, count }) => {
   return (
-    <div className="flex h-[6rem] w-[25%] items-center justify-center gap-2 rounded-b-3xl bg-blog-white xl:h-[12rem] xl:w-full xl:flex-col xl:rounded-l-[0] xl:rounded-tr-3xl xl:pl-[60%]">
+    <div className="flex h-[6rem] w-[30%] items-center justify-center gap-2 rounded-b-3xl bg-blog-white xl:h-[12rem] xl:w-full xl:flex-col xl:rounded-l-[0] xl:rounded-tr-3xl xl:pl-[60%]">
       <Icon className="pointer-events-none text-[1rem] font-bold" />
-      <p className="flex flex-col items-center text-[0.8rem] font-bold">
+      <p className="flex flex-col items-center text-[1.2rem] font-bold">
         <span>
           {count ? count : "??"} {title === "총 포스팅" ? "개" : "일"}
         </span>
@@ -34,7 +34,7 @@ const BlogInfo = () => {
         <p className="text-[2.5rem] font-bold">
           블로그 방문을 진심으로 환영합니다.
         </p>
-        <p className="text-[1rem]">
+        <p className="text-[1.2rem]">
           Web개발을 공부하며 습득해온 지식으로,
           <br /> 더욱 풍부하고 다양한 기억을 채워나갈 저의 두번째 뇌 입니다.
         </p>

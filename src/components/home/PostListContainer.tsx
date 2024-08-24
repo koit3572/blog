@@ -26,7 +26,7 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(1);
   return (
-    <div className="h-[65rem] w-[70rem] max-w-[calc(100vw-3rem)] overflow-hidden">
+    <div className="h-[50rem] w-[70rem] max-w-[calc(100vw-3rem)] overflow-hidden xl:h-[65rem]">
       <div className="relative flex w-full flex-col items-center">
         <div className="relative flex h-[10rem] w-full justify-center rounded-t-3xl bg-slate-400">
           <TriangleDiv

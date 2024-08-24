@@ -1,6 +1,5 @@
 "use client";
 import { PostInfo } from "@/types/post";
-import { getFormatText, getFormatTitle } from "./post";
 
 interface IGetSearchRankingParamses {
   posts: {

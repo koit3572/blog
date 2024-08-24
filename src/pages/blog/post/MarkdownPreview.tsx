@@ -1,7 +1,5 @@
 "use client";
-import { PostInfo } from "@/types/post";
 import React, { useEffect, useRef, useState } from "react";
-
 import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
@@ -9,36 +7,50 @@ import remarkGfm from "remark-gfm";
 import gsap from "gsap";
 import { useSearchParams } from "next/navigation";
 import { useAppSelector } from "@/hooks/redux";
+import useComponentSize from "@/hooks/useComponentSize";
+import { getFormatTitle } from "@/lib/post";
 
 const MarkdownPreview = () => {
   const query = useSearchParams().get("path");
   const { posts } = useAppSelector((state) => state.postSlice);
-  const [post, setPost] = useState(posts[query as keyof typeof posts]);
   const divRef = useRef<HTMLDivElement>(null);
+  const [post, setPost] = useState(posts[query as keyof typeof posts]);
   const [spyOffsetTops, setSpyOffsetTops] = useState<number[]>([]);
   const onClickListItme = (index: number) => {
-    //const header = document.getElementsByTagName("header")[0] as HTMLElement;
     gsap.to(window, {
       duration: 0.5,
-      scrollTo: 800 + spyOffsetTops[index],
+      scrollTo: spyOffsetTops[index],
     });
   };
+  const [container, size] = useComponentSize({ throttleTime: 300 });
   useEffect(() => {
     const spyOffsetTops: number[] = [];
-    document.querySelectorAll(".post-scroll-spy").forEach((el) => {
-      spyOffsetTops.push((el as HTMLElement).offsetTop);
-    });
-    console.log(post);
-    setSpyOffsetTops([...spyOffsetTops]);
-  }, [post]);
+    Object.keys(container.current?.children!).reduce(
+      (spyOffsetTopsAcc, _, index) => {
+        if (
+          container.current?.children![index].className.includes(
+            "post-scroll-spy",
+          )
+        ) {
+          spyOffsetTops.push(spyOffsetTopsAcc);
+        }
+        return (spyOffsetTopsAcc =
+          spyOffsetTopsAcc +
+          (container.current?.children![index] as HTMLElement).offsetHeight);
+      },
+      container.current?.offsetTop! as number,
+    );
+    setSpyOffsetTops(spyOffsetTops);
+  }, [size]);
+
   useEffect(() => {
     setPost(posts[query as keyof typeof posts]);
   }, [posts, query]);
   return (
-    <div className="max-w-[calc(100vw-3rem)]">
+    <div ref={container} className="max-w-[calc(100vw-3rem)] overflow-hidden">
       <div ref={divRef} className="flex flex-col items-center">
-        <div className="mb-12 flex flex-col items-center gap-3 border-b-[1.5px] border-[#1e293b] border-opacity-35 py-12">
-          <h1 className="z-[30] w-full text-center text-[4rem] font-[900] text-slate-800">
+        <div className="mb-12 flex w-full flex-col items-center gap-3 border-b-[1.5px] border-[#1e293b] border-opacity-35 py-12">
+          <h1 className="z-[30] w-full text-center text-[3.5rem] font-[900] text-slate-800">
             {post.title}
           </h1>
           <p className="pb-12 text-[1.5rem] font-[600] opacity-60">
@@ -47,7 +59,7 @@ const MarkdownPreview = () => {
           <p>
             {post.writer} · {post.createdAt}
           </p>
-          <div className="hidden gap-2 py-2 xl:flex">
+          <div className="flex flex-wrap justify-center gap-2 py-2">
             {post.tags.map((tag, i) => (
               <div
                 className="rounded-lg bg-slate-700 p-2 py-1 text-[1.5rem] text-gray-200"
@@ -61,7 +73,7 @@ const MarkdownPreview = () => {
             {post.discription}
           </p>
         </div>
-        <div className="flex max-h-[250px] w-[50rem] max-w-[100vw] flex-col items-center">
+        <div className="flex max-h-[250px] w-[50rem] max-w-[calc(100vw-3rem)] flex-col items-center">
           <h1 className="w-full rounded-t-lg bg-slate-600 px-3 py-2 text-[2rem] font-[600] text-gray-200">
             목차
           </h1>
@@ -89,41 +101,41 @@ const MarkdownPreview = () => {
         components={{
           h1({ children }) {
             return (
-              <>
-                <br />
-                <br />
-                <h1 className="post-scroll-spy mt-12 block rounded-t-xl bg-slate-700 p-3 text-[3rem] font-bold text-gray-200">
+              <div className="pt-12">
+                <h1 className="block rounded-t-xl bg-slate-700 p-3 text-[3rem] font-bold text-gray-200">
                   {children}
                 </h1>
-              </>
+              </div>
             );
           },
           h2({ children }) {
             return (
-              <h1 className="post-scroll-spy my-4 border-b-[1.2px] border-[#475569] p-3 text-[3rem] font-bold">
-                {children}
-              </h1>
+              <div className="post-scroll-spy py-4">
+                <h2 className="border-b-[1.2px] border-[#475569] p-3 text-[3rem] font-bold">
+                  {children}
+                </h2>
+              </div>
             );
           },
           h3({ children }) {
             return (
-              <h1 className="post-scroll-spy p-3 text-[2.5rem] font-bold">
+              <h3 className="post-scroll-spy p-3 text-[2.5rem] font-bold">
                 {children}
-              </h1>
+              </h3>
             );
           },
           h4({ children }) {
             return (
-              <h1 className="post-scroll-spy p-3 text-[2rem] font-bold">
+              <h4 className="post-scroll-spy p-3 text-[2rem] font-bold">
                 {children}
-              </h1>
+              </h4>
             );
           },
           h5({ children }) {
             return (
-              <h1 className="post-scroll-spy p-3 text-[1.5rem] font-bold">
+              <h5 className="post-scroll-spy p-3 text-[1.5rem] font-bold">
                 {children}
-              </h1>
+              </h5>
             );
           },
           p({ children }) {
@@ -148,9 +160,11 @@ const MarkdownPreview = () => {
           },
           table({ children }) {
             return (
-              <table className="my-3 block max-w-[100vw] overflow-hidden rounded-lg rounded-t-xl text-[1.5rem] font-[600]">
-                {children}
-              </table>
+              <div className="py-3">
+                <table className="block max-w-[100vw] overflow-hidden rounded-lg rounded-t-xl text-[1.5rem] font-[600]">
+                  {children}
+                </table>
+              </div>
             );
           },
           thead({ children }) {
