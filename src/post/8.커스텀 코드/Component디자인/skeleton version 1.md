@@ -1,19 +1,26 @@
 ---
-title: 'skeleton version 1'
+title: "skeleton version 1"
 createdAt: "2024-07-10 12:11:09"
 updatedAt: "2024-07-10 12:11:09"
-discription: "skeleton version 1 커스텀 component로 은 보편적인 스켈레톤 애니메이션인 블러처리된 세로선이 좌에서 우로 흐르는 움직임을 구현하였다."
-tags: ['loading','component의','skeleton','스켈레톤']
+description: "skeleton version 1 커스텀 component로 은 보편적인 스켈레톤 애니메이션인 블러처리된 세로선이 좌에서 우로 흐르는 움직임을 구현하였다."
+tags: ["loading", "component의", "skeleton", "스켈레톤"]
 isFavorite: false
 ---
+
 # 사전준비
+
 ## 설치
+
 ```npm
 $ npm install gsap
 ```
+
 ## skeleton 사용 기준
-- 
+
+-
+
 # 사용 & 응용
+
 ```js
 'use client'
 import gsap from 'gsap';

@@ -84,7 +84,7 @@ export const getPosts = (postPaths: string[] = getPostPaths()) => {
       [postPath]: {
         path: postPath,
         title: title,
-        discription: postInfo.data.discription,
+        description: postInfo.data.description,
         writer: "koit",
         createdAt: postInfo.data.createdAt,
         tags: postInfo.data.tags ? postInfo.data.tags : [],
@@ -152,13 +152,13 @@ export const getMenu = (): IMenu => {
   return menu;
 };
 
-export const getFormatDiscription = (text: string) => {
-  const discription = text || "해당 포스트에 대한 설명이 없습니다.";
-  const isOverFlow = discription!.length > 45;
-  const formatDiscription = isOverFlow
-    ? discription.length === 45
-      ? discription.substring(0, 45)
-      : discription.substring(0, 45) + "..."
-    : discription;
-  return formatDiscription;
+export const getFormatdescription = (text: string) => {
+  const description = text || "해당 포스트에 대한 설명이 없습니다.";
+  const isOverFlow = description!.length > 45;
+  const formatdescription = isOverFlow
+    ? description.length === 45
+      ? description.substring(0, 45)
+      : description.substring(0, 45) + "..."
+    : description;
+  return formatdescription;
 };

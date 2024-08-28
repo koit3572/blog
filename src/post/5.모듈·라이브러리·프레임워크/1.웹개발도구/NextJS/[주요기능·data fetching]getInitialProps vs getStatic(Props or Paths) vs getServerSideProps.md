@@ -1,6 +1,6 @@
 ---
 createdAt: "2024-08-11 00:51:15"
-discription: "NextJS 에서 data fetching을 위해 사용하기 위해 사용되는 getInitialProps와 getStaticProps,getStaticPaths, getServerSideProps의 사용법과 getInitialProps가 NextJS v9.3이후로 사용을 지양하게 된 이유에 대한 포스팅"
+description: "NextJS 에서 data fetching을 위해 사용하기 위해 사용되는 getInitialProps와 getStaticProps,getStaticPaths, getServerSideProps의 사용법과 getInitialProps가 NextJS v9.3이후로 사용을 지양하게 된 이유에 대한 포스팅"
 tags:
   [
     "getInitialProps",
@@ -123,6 +123,15 @@ Home.getInitialProps = async (
   return { page };
 };
 ```
+
+## getStaticProps
+
+### 주의사항
+
+- getStaticProps는 페이지에서만 내보낼 수 있다.
+- 비 페이지 파일, \_app, \_document 또는 \_error에서 내보낼 수 없다.
+
+## getStaticPaths
 
 ## getServerSideProps
 

@@ -4,7 +4,7 @@ interface IPaginationProps {
   itemlength: number;
   maxPaginationNum: number;
   currentIndex: number;
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentIndex: React.Dispatch<React.SetStateAction<any>>;
   style?: {
     paginationController?: {
       common?: string;

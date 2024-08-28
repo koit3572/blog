@@ -5,7 +5,7 @@ export interface IPostFolderStructure {
 export interface PostInfo {
   path: string; // 1.개요/IT지식/정규표현식(Regex).md
   title: string; // 정규표현식(Regex).md >
-  discription: string;
+  description: string;
   writer: string;
   createdAt: string;
   tags: string[];
@@ -17,7 +17,7 @@ export interface PostInfo {
 export const postInfoKeys = [
   "path",
   "title",
-  "discription",
+  "description",
   "writer",
   "createdAt",
   "tags",

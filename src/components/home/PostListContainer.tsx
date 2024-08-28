@@ -57,9 +57,9 @@ const PostListContainer: React.FC<PostListContainerProps> = ({
                   return (
                     <PostCard
                       key={i}
-                      title={postList[postData].title.replace(/\[.+\]/, "")}
+                      title={postList[postData].title}
                       category={postList[postData].category}
-                      discription={postList[postData].discription}
+                      description={postList[postData].description}
                       createdAt={postList[postData].createdAt}
                       writer={postList[postData].writer}
                       fullPath={postData}

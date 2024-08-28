@@ -54,7 +54,9 @@ const MarkdownPreview = () => {
             {post.title}
           </h1>
           <p className="pb-12 text-[1.5rem] font-[600] opacity-60">
-            {post.category.join(" > ")}
+            {post.category
+              .slice(0, post.title.split("[").length - 1)
+              .join(" > ")}
           </p>
           <p>
             {post.writer} · {post.createdAt}
@@ -70,7 +72,7 @@ const MarkdownPreview = () => {
             ))}
           </div>
           <p className="rounded-lg bg-slate-400 p-6 text-[1.5rem] font-[500]">
-            {post.discription}
+            {post.description}
           </p>
         </div>
         <div className="flex max-h-[250px] w-[50rem] max-w-[calc(100vw-3rem)] flex-col items-center">

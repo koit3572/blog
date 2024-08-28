@@ -15,7 +15,7 @@ import Link from "next/link";
 import path from "path";
 import { ROOTMENU_DESCRIPTION } from "@/constent";
 
-type RootDirDiscriptionType = keyof typeof ROOTMENU_DESCRIPTION;
+type RootDirdescriptionType = keyof typeof ROOTMENU_DESCRIPTION;
 
 const RootDirMenu = () => {
   const { menu } = useAppSelector((state) => state.postSlice);
@@ -60,20 +60,44 @@ const RootDirMenu = () => {
                       <p className="w-[50%]">
                         {
                           ROOTMENU_DESCRIPTION[
-                            dirName as RootDirDiscriptionType
+                            dirName as RootDirdescriptionType
                           ]
                         }
                       </p>
                       <div className="flex h-[19rem] w-[45rem] max-w-[100vw] flex-wrap justify-center gap-2 overflow-y-auto p-10">
-                        {(menu[dirName] as string[]).map((childDirName, i) => (
-                          <Link
-                            key={i}
-                            href={`/blog/category/?category=${path.join(dirName, childDirName)}`}
-                            className="flex h-[6em] w-[6rem] items-center justify-center rounded-md bg-gray-300 font-bold text-[#333] hover:cursor-pointer"
-                          >
-                            {getFormatText(childDirName)}
-                          </Link>
-                        ))}
+                        {(menu[dirName] as string[]).map((childDirName, i) => {
+                          const formatChildDirName = (title: string) => {
+                            const result = getFormatText(title);
+                            if (result === "React개발도구") {
+                              return (
+                                <p>
+                                  <span>React</span>
+                                  <br />
+                                  <span>개발도구</span>
+                                </p>
+                              );
+                            } else if (result === "디자인·애니메이션") {
+                              return (
+                                <p>
+                                  <span>디자인</span>
+                                  <br />
+                                  <span>애니메이션</span>
+                                </p>
+                              );
+                            } else {
+                              return <p>{result}</p>;
+                            }
+                          };
+                          return (
+                            <Link
+                              key={i}
+                              href={`/blog/category/?category=${path.join(dirName, childDirName)}`}
+                              className="flex h-[6em] w-[6rem] items-center justify-center rounded-md bg-gray-300 font-bold text-[#333] hover:cursor-pointer"
+                            >
+                              {formatChildDirName(childDirName)}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   )}

@@ -1,6 +1,6 @@
 ---
 createdAt: "2024-08-11 00:51:15"
-discription: ""
+description: ""
 tags: []
 isFavorite: false
 ---

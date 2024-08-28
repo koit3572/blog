@@ -1,7 +1,7 @@
 ---
 createdAt: "2024-06-27 15:23:53"
 updatedAt: "2024-06-27 15:23:53"
-discription: "NextJS를 사용할 때 발생하는 문제나 질문들을 모아 해결방법을 기록"
+description: "NextJS를 사용할 때 발생하는 문제나 질문들을 모아 해결방법을 기록"
 tags: ["error", "에러", "ap-style", "오류", "suppressHydrationWarning"]
 isFavorite: false
 ---

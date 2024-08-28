@@ -99,7 +99,7 @@ const Search = () => {
     >
       <input
         id="search-input"
-        className="w-[250px] rounded-xl p-1 pl-2 pr-8 text-[1.5rem] shadow-md outline-none focus:border"
+        className="w-[250px] max-w-[calc(100vw-3rem)] rounded-xl p-1 pl-2 pr-8 text-[1.5rem] shadow-md outline-none focus:border"
         placeholder="통합 검색"
         autoComplete="off"
         {...register("search")}
